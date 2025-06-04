@@ -9,6 +9,8 @@
     "pnpm": ">=9.0.0"
   },
   "scripts": {
+    "ai:context": "node tools/ai-context/generate.js",
+    "ai:prepare": "pnpm ai:context && echo 'Ready for AI session!'",
     "dev": "pnpm --filter web dev",
     "build": "pnpm run -r build",
     "preview": "pnpm --filter web preview",

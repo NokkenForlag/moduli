@@ -1,12 +1,12 @@
-D .ai/context/2025-06-04-dev-environment-setup.md
+AM .ai/README.md
+RM .ai/context/2025-06-04-dev-environment-setup.md -> .ai/checkpoints/2025-06-04-dev-environment-setup.md
+AM .ai/context/README.md
+A .ai/context/current-status.md
+A .ai/context/recent-commits.md
+A .ai/context/tree-20250605-0113.md
+A .ai/context/tree-20250605-0122.md
+AM .ai/context/working-changes.md
+A .ai/templates/session-template.md
 M package.json
-?? .ai/README.md
-?? .ai/checkpoints/
-?? .ai/context/README.md
-?? .ai/context/current-status.md
-?? .ai/context/recent-commits.md
-?? .ai/context/tree-20250605-0113.md
-?? .ai/context/tree-20250605-0122.md
-?? .ai/context/working-changes.md
-?? .ai/templates/
+?? .ai/context/tree-20250605-0127.md
 ?? tools/ai-context/
