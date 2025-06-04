@@ -17,7 +17,7 @@
     "test:integration": "pnpm run -r test:integration",
     "lint": "pnpm run -r lint",
     "format": "prettier --write .",
-    "typecheck": "echo \"Typecheck skipped - no TS files yet\" && exit 0",
+    "typecheck": "echo 'skipping typecheck (no TS)' && exit 0",
     "validate": "pnpm run validate:content && pnpm run validate:graph && pnpm run validate:types",
     "validate:content": "pnpm --filter @moduli/content validate",
     "validate:graph": "pnpm --filter @moduli/graph validate",
