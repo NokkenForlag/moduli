@@ -1,0 +1,1 @@
+checkpoints/2025-06-04-dev-environment-setup.md

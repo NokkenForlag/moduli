@@ -1,0 +1,15 @@
+# packages/config/view-configs/teacher-view.yaml
+extends: base-view
+role: teacher
+features:
+  - teacher-notes
+  - progress-tracking
+  - class-management
+sections:
+  header:
+    components:
+      - ClassSelector
+      - TeacherToolbar
+  content:
+    showTeacherNotes: true
+    showDifficultyIndicators: true

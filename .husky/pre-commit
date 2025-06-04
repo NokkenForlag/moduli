@@ -1,0 +1,18 @@
+# Kjør typecheck på hele prosjektet
+echo "🔍 Running typecheck..."
+pnpm typecheck
+
+# Kjør lint-staged med eksplisitt config
+echo "✨ Running lint-staged..."
+pnpm exec lint-staged --config ./lint-staged.config.js
+
+# Valider endret innhold
+echo "📝 Validating content..."
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep "packages/content/src/concepts/.*\.md$" || true)
+if [ -n "$staged_files" ]; then
+  pnpm --filter @moduli/content validate:files $staged_files
+else
+  echo "No content files to validate"
+fi
+
+echo "✅ Pre-commit checks passed!"
