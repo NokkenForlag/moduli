@@ -1,4 +1,4 @@
-# 📋 Checkpoint: 2025-06-04-dev-environment-setup
+# Checkpoint: 2025-06-04-dev-environment-setup
 
 ## 🧭 Prosjektkontekst
 
@@ -101,6 +101,91 @@ Moduli monorepo er satt opp med full utviklingskonvensjon:
 
 - [ ] tree.md (hvis nødvendig)
 - [ ] Relevante config-filer
+```
+
+## 🧭 Snapshot og videre kontekst
+
+For å sikre at fremtidige sesjoner starter med god forståelse av prosjektets struktur og fremdrift, anbefales det å lagre et "snapshot" av repoet per checkpoint. Dette er kritisk fordi AI-assistenter som Claude ikke har tilgang til tidligere samtaler.
+
+### Hvorfor snapshots er viktig
+
+AI-assistenter starter hver sesjon uten minne om tidligere arbeid. Et godt snapshot gir:
+
+- Umiddelbar forståelse av prosjektstruktur
+- Kontekst om tekniske valg og konvensjoner
+- Oversikt over hva som er implementert vs. planlagt
+- Grunnlag for konsistente anbefalinger
+
+### Bruk av tree.md og kontekstmapper
+
+**Generer alltid oppdatert `tree.md` før ny sesjon:**
+
+```bash
+tree -I 'node_modules|.git|dist|.svelte-kit' > .ai/context/tree.md
+```
+
+**Organiser kontekst i `.ai/context/`:**
+
+```bash
+# Generer fersk tree direkte i context
+tree -I 'node_modules|.git|dist|.svelte-kit' > .ai/context/current-tree.md
+
+# Kopier andre relevante filer
+cp pnpm-workspace.yaml .ai/context/
+cp -r packages/*/package.json .ai/context/packages/ 2>/dev/null || true
+```
+
+### Best practice for effektiv kontekst
+
+Ved oppstart av ny sesjon, inkluder:
+
+1. **Strukturell kontekst** med `#context` tag:
+
+   ```markdown
+   #context Her er nåværende struktur fra tree.md:
+   [lim inn relevante deler av tree.md]
+   ```
+
+2. **Teknisk status** med `#snapshot` tag:
+
+   ```markdown
+   #snapshot Teknisk oppsummering:
+
+   - Monorepo med pnpm workspaces
+   - TypeScript strict mode
+   - Graf-arkitektur implementert i: [liste paths]
+   - Packages initialisert: [liste]
+   ```
+
+3. **Endringer siden sist:**
+
+   ```markdown
+   Nye paths opprettet:
+
+   - packages/graph/src/algorithms/
+   - apps/web/src/routes/
+
+   Oppdaterte dependencies:
+
+   - Added: @moduli/types workspace dependency
+   ```
+
+4. **Spesifikk arbeidsøkt-kontekst:**
+   - Hvilke filer du jobber med
+   - Eventuelle feilmeldinger eller blokkere
+   - Designbeslutninger som må huskes
+
+### Kommandoer for rask kontekst-generering
+
+```bash
+# Full snapshot
+alias moduli-snapshot='tree -I "node_modules|.git|dist|.svelte-kit" > .ai/context/tree-$(date +%Y%m%d).md && echo "Snapshot saved!"'
+
+# Vis endringer siden forrige checkpoint
+alias moduli-changes='git log --oneline --since="1 day ago" && echo -e "\nEndrede filer:" && git diff --name-only HEAD~5'
+
+# Eksporter aktiv kontekst
+alias moduli-export='tar -czf moduli-context-$(date +%Y%m%d).tar.gz .ai/context/'
 ```
 
 ---
