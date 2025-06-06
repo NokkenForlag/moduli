@@ -1,0 +1,39 @@
+{
+  "name": "@moduli/types",
+  "version": "0.1.0",
+  "description": "Core type definitions for Moduli",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./graph": {
+      "types": "./dist/graph.d.ts",
+      "import": "./dist/graph.js"
+    },
+    "./user": {
+      "types": "./dist/user.d.ts",
+      "import": "./dist/user.js"
+    },
+    "./content": {
+      "types": "./dist/content.d.ts",
+      "import": "./dist/content.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "typescript": "^5.6.2"
+  }
+}
