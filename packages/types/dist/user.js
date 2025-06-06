@@ -1,97 +1,13 @@
 import { z } from "zod";
-import type { ConceptId } from "./graph";
-
 // ===== User Types =====
-
-export enum UserRole {
-  STUDENT = "student",
-  TEACHER = "teacher",
-  ADMIN = "admin",
-  PARENT = "parent",
-}
-
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  role: UserRole;
-  schoolId?: string;
-  preferences: UserPreferences;
-  metadata: {
-    createdAt: Date;
-    lastLogin?: Date;
-    isActive: boolean;
-  };
-}
-
-export interface UserPreferences {
-  theme?: "light" | "dark" | "system";
-  language?: string;
-  difficulty?: number; // preferred difficulty level
-  notifications?: {
-    email: boolean;
-    inApp: boolean;
-  };
-}
-
-export interface School {
-  id: string;
-  name: string;
-  domain?: string; // e.g., "skole.no"
-  subscription: {
-    plan: "basic" | "premium" | "enterprise";
-    validUntil: Date;
-    maxUsers?: number;
-  };
-  settings: {
-    allowStudentSelfSignup?: boolean;
-    requireEmailVerification?: boolean;
-    customBranding?: {
-      logo?: string;
-      primaryColor?: string;
-    };
-  };
-}
-
-// ===== Progress Tracking =====
-
-export interface UserProgress {
-  userId: string;
-  conceptId: ConceptId;
-  status: "not_started" | "in_progress" | "completed" | "mastered";
-  startedAt?: Date;
-  completedAt?: Date;
-  attempts: number;
-  score?: number; // 0-100
-  timeSpent: number; // minutes
-  metadata?: {
-    notes?: string;
-    bookmarked?: boolean;
-  };
-}
-
-export interface LearningSession {
-  id: string;
-  userId: string;
-  startedAt: Date;
-  endedAt?: Date;
-  concepts: ConceptId[];
-  path?: string; // learning path ID if following one
-  metadata: {
-    device?: string;
-    location?: string;
-  };
-}
-
-// ===== Permissions =====
-
-export interface Permission {
-  resource: string;
-  action: "read" | "write" | "delete" | "admin";
-  conditions?: Record<string, unknown>;
-}
-
-export const DEFAULT_PERMISSIONS: Record<UserRole, Permission[]> = {
+export var UserRole;
+(function (UserRole) {
+  UserRole["STUDENT"] = "student";
+  UserRole["TEACHER"] = "teacher";
+  UserRole["ADMIN"] = "admin";
+  UserRole["PARENT"] = "parent";
+})(UserRole || (UserRole = {}));
+export const DEFAULT_PERMISSIONS = {
   [UserRole.STUDENT]: [
     { resource: "concept", action: "read" },
     { resource: "own_progress", action: "read" },
@@ -110,11 +26,8 @@ export const DEFAULT_PERMISSIONS: Record<UserRole, Permission[]> = {
     { resource: "concept", action: "read" },
   ],
 };
-
 // ===== Zod Schemas =====
-
 export const UserRoleSchema = z.nativeEnum(UserRole);
-
 export const UserPreferencesSchema = z.object({
   theme: z.enum(["light", "dark", "system"]).optional(),
   language: z.string().optional(),
@@ -126,7 +39,6 @@ export const UserPreferencesSchema = z.object({
     })
     .optional(),
 });
-
 export const UserSchema = z.object({
   id: z.string(),
   email: z.string().email(),
@@ -140,7 +52,6 @@ export const UserSchema = z.object({
     isActive: z.boolean(),
   }),
 });
-
 export const SchoolSchema = z.object({
   id: z.string(),
   name: z.string().min(1),
@@ -161,7 +72,6 @@ export const SchoolSchema = z.object({
       .optional(),
   }),
 });
-
 export const UserProgressSchema = z.object({
   userId: z.string(),
   conceptId: z.string(),
@@ -178,22 +88,14 @@ export const UserProgressSchema = z.object({
     })
     .optional(),
 });
-
 // ===== Type Guards =====
-
-export const isUser = (obj: unknown): obj is User => {
+export const isUser = (obj) => {
   return UserSchema.safeParse(obj).success;
 };
-
-export const isSchool = (obj: unknown): obj is School => {
+export const isSchool = (obj) => {
   return SchoolSchema.safeParse(obj).success;
 };
-
-export const hasPermission = (
-  user: User,
-  resource: string,
-  action: Permission["action"],
-): boolean => {
+export const hasPermission = (user, resource, action) => {
   const permissions = DEFAULT_PERMISSIONS[user.role];
   return permissions.some(
     (p) =>
@@ -201,3 +103,4 @@ export const hasPermission = (
       (p.action === action || p.action === "admin"),
   );
 };
+//# sourceMappingURL=user.js.map

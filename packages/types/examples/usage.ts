@@ -100,7 +100,9 @@ state = { status: "loading" };
 // Success
 state = {
   status: "success",
-  data: [concept as Concept],
+  data: [
+    validationResult.success ? validationResult.data : (rawConcept as Concept),
+  ],
 };
 
 // Error
@@ -171,4 +173,7 @@ const conceptService: ConceptService = {
 };
 
 // ===== Export for testing =====
+const concept = validationResult.success
+  ? validationResult.data
+  : (rawConcept as Concept);
 export { teacher, concept, relation, algebraCollection };

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { ConceptId, RelationType } from "./graph.js";
+import type { ConceptId, RelationType } from "./graph";
 
 // ===== Content Types =====
 

@@ -24,6 +24,7 @@
     "noEmit": true,
     "paths": {
       "@moduli/types": ["./packages/types/src/index.ts"],
+      "@moduli/types/*": ["./packages/types/src/*"],
       "@moduli/graph": ["./packages/graph/src/index.ts"],
       "@moduli/ui": ["./packages/ui/src/index.ts"],
       "@moduli/content": ["./packages/content/src/index.ts"],

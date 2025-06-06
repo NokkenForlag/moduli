@@ -4,10 +4,7 @@
  * This package provides all TypeScript interfaces, types, and Zod schemas
  * used throughout the Moduli monorepo.
  */
-
-// ===== Graph Types =====
 export {
-  // Types
   type ConceptId,
   type NodeMetadata,
   type Concept,
@@ -15,25 +12,18 @@ export {
   type ConceptRelation,
   type Collection,
   type LearningPath,
-
-  // Schemas
   NodeMetadataSchema,
   ConceptSchema,
   RelationTypeSchema,
   ConceptRelationSchema,
   CollectionSchema,
   LearningPathSchema,
-
-  // Type Guards
   isConcept,
   isConceptRelation,
   isCollection,
   isLearningPath,
-} from "./graph";
-
-// ===== User Types =====
+} from "./graph.js";
 export {
-  // Types
   UserRole,
   type User,
   type UserPreferences,
@@ -42,23 +32,16 @@ export {
   type LearningSession,
   type Permission,
   DEFAULT_PERMISSIONS,
-
-  // Schemas
   UserRoleSchema,
   UserPreferencesSchema,
   UserSchema,
   SchoolSchema,
   UserProgressSchema,
-
-  // Type Guards & Helpers
   isUser,
   isSchool,
   hasPermission,
-} from "./user";
-
-// ===== Content Types =====
+} from "./user.js";
 export {
-  // Types
   type ConceptFrontmatter,
   type RelationDefinition,
   type ParsedConcept,
@@ -71,8 +54,6 @@ export {
   type NavigationConfig,
   type NavItem,
   type ThemeConfig,
-
-  // Schemas
   RelationDefinitionSchema,
   ConceptFrontmatterSchema,
   HeadingSchema,
@@ -80,58 +61,38 @@ export {
   ParsedConceptSchema,
   CollectionMemberSchema,
   CollectionDefinitionSchema,
-
-  // Type Guards
   isConceptFrontmatter,
   isParsedConcept,
   isCollectionMember,
-} from "./content";
-
-// ===== Utility Types =====
+} from "./content.js";
 export {
-  // Generic Utilities
   type DeepPartial,
   type DeepRequired,
   type ArrayElement,
   type RequireKeys,
   type PartialKeys,
-
-  // API Types
   type ApiResponse,
   type ApiError,
   type PaginatedResponse,
-
-  // Event Types
   type BaseEvent,
   type ConceptEvent,
   type ProgressEvent,
-
-  // Query Types
   type Filter,
   type Sort,
   type QueryOptions,
-
-  // Validation Types
   type ValidationResult,
   type ValidationError,
-
-  // Branded Types
   type Brand,
   type UserId,
   type SchoolId,
   type SessionId,
   brand,
-
-  // Async Types
   type AsyncState,
   type CacheEntry,
-
-  // Constants
   DIFFICULTY_LEVELS,
   PROGRESS_STATES,
   RELATION_STRENGTHS,
-} from "./utils";
-
-// ===== Re-export commonly used Zod utilities =====
+} from "./utils.js";
 export { z } from "zod";
 export type { ZodError, ZodIssue } from "zod";
+//# sourceMappingURL=index.d.ts.map
