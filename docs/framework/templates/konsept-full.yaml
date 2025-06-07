@@ -1,0 +1,43 @@
+# Full mal for omfattende konsepter
+# For dyptgående moduler med alle features
+
+# [Inkluderer alt fra standard + følgende]
+
+# === UTVIDET METADATA ===
+extendedMetadata:
+  keywords: ["nøkkelord1", "nøkkelord2"]
+  crossCurricular: ["fysikk", "økonomi"]
+  culturalNotes: "Relevans i ulike kulturer"
+  historicalContext: "Matematikkhistorisk bakgrunn"
+
+# === MULTIMODALE RESSURSER ===
+resources:
+  videos:
+    - id: "intro-video"
+      url: "videos/linear-intro.mp4"
+      duration: "3:45"
+      purpose: "Motivasjon og oversikt"
+      
+  interactives:
+    - id: "parameter-explorer"
+      type: "geogebra"
+      embed: "https://geogebra.org/..."
+      
+  animations:
+    - id: "slope-animation"
+      file: "animations/slope.json"
+      tool: "rive"
+
+# === FORSKNINGSBASERT ===
+research:
+  commonDifficulties:
+    - source: "Tall, 2019"
+      finding: "70% strever med parametertolkning"
+      intervention: "Fargebasert differensiering"
+      
+  effectiveStrategies:
+    - source: "Niss & Højgaard, 2011"
+      strategy: "Kompetanseorientert"
+      implementation: "Fokus på modellering"
+
+# [Fortsetter med flere seksjoner...]

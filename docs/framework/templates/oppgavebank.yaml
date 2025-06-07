@@ -1,0 +1,287 @@
+# Mal for oppgavebank
+# Separat fil for oppgaver tilknyttet et konsept
+
+# === METADATA ===
+metadata:
+  konseptId: "a-3-2"
+  konseptTittel: "Lineære funksjoner"
+  antallOppgaver: 20
+  distribusjon:
+    utforskning: 8     # 40%
+    øving: 5          # 25%
+    kobling: 4        # 20%
+    overføring: 3     # 15%
+  estimertTid:
+    total: "45-60 min"
+    perType:
+      utforskning: "20 min"
+      øving: "10 min"
+      kobling: "10 min"
+      overføring: "10 min"
+
+# === UTFORSKNINGSOPPGAVER (40%) ===
+utforskning:
+  beskrivelse: "Oppgaver som bygger intuisjon og lar eleven oppdage mønstre"
+  
+  oppgaver:
+    - id: "u1"
+      tittel: "Tallmønster"
+      prompt: |
+        Se på denne tabellen:
+        x: 0  1  2  3  4
+        y: 3  5  7  9  11
+        
+        a) Hvilket mønster ser du?
+        b) Hva blir y når x = 10?
+        c) Kan du finne en regel?
+      
+      hensikt: "Oppdage konstant differanse"
+      
+      støtte:
+        hint1: "Se på forskjellen mellom y-verdiene"
+        hint2: "Øker y-verdien like mye hver gang?"
+        visuell: "Marker differansene med farger"
+      
+      vurdering:
+        fokus: "Ser eleven mønsteret?"
+        godkjent: "Identifiserer konstant økning på 2"
+      
+      tokens: ["{task:explore}", "{object:pattern}"]
+      
+    - id: "u2"
+      tittel: "Graf-utforskning"
+      prompt: |
+        Bruk digitalt verktøy til å tegne disse grafene:
+        - y = 2x + 1
+        - y = 2x + 3
+        - y = 2x - 2
+        
+        Hva har de til felles? Hva er forskjellig?
+      
+      hensikt: "Utforske betydningen av konstantledd"
+      
+      differensiering:
+        støtte: "Start med bare to grafer"
+        utvidelse: "Legg til y = 3x + 1 og sammenlign"
+      
+      tokens: ["{task:explore}", "{task:compare}"]
+
+# === ØVINGSOPPGAVER (25%) ===
+øving:
+  beskrivelse: "Ferdighetstrening på standardprosedyrer"
+  
+  oppgaver:
+    - id: "ø1"
+      tittel: "Beregn funksjonsverdi"
+      oppgavesett:
+        - "Hvis f(x) = 3x + 2, finn f(4)"
+        - "Hvis g(x) = -2x + 5, finn g(3)"
+        - "Hvis h(x) = 0.5x - 1, finn h(8)"
+      
+      svar: ["14", "-1", "3"]
+      
+      progresjon:
+        lett: "Positive heltall"
+        middels: "Negative og desimaltall"
+        vanskelig: "Brøker og parametere"
+      
+      automatiskRetting: true
+      tokens: ["{task:practice}", "{skill:calculation}"]
+      
+    - id: "ø2"
+      tittel: "Finn funksjonsuttrykk"
+      prompt: "Finn funksjonsuttrykket når grafen går gjennom punktene:"
+      
+      oppgavesett:
+        - punkter: "(0, 2) og (1, 5)"
+          svar: "f(x) = 3x + 2"
+          
+        - punkter: "(0, -1) og (2, 3)"
+          svar: "f(x) = 2x - 1"
+          
+        - punkter: "(1, 4) og (3, 10)"
+          svar: "f(x) = 3x + 1"
+      
+      løsningsmal:
+        steg1: "Finn stigningstallet: a = Δy/Δx"
+        steg2: "Sett inn i y = ax + b"
+        steg3: "Bruk et punkt for å finne b"
+      
+      tokens: ["{task:practice}", "{skill:find-expression}"]
+
+# === KOBLINGSOPPGAVER (20%) ===
+kobling:
+  beskrivelse: "Koble ulike representasjoner av samme konsept"
+  
+  oppgaver:
+    - id: "k1"
+      tittel: "Match representasjoner"
+      format: "matching"
+      
+      instruksjon: "Koble sammen uttrykk, graf og tabell som hører sammen"
+      
+      sett1:
+        - uttrykk: "y = 2x + 1"
+          graf: "graf_a.png"
+          tabell: |
+            x: 0  1  2
+            y: 1  3  5
+            
+        - uttrykk: "y = -x + 3"
+          graf: "graf_b.png"
+          tabell: |
+            x: 0  1  2
+            y: 3  2  1
+      
+      vurdering:
+        poeng: "1 per korrekt matching"
+        feedback: "Vis hvordan man sjekker"
+      
+      tokens: ["{task:connect}", "{repr:multiple}"]
+      
+    - id: "k2"
+      tittel: "Oversett mellom kontekst og algebra"
+      prompt: |
+        En taxi har startpris 50 kr og koster 15 kr per kilometer.
+        
+        a) Skriv en funksjon for totalpris
+        b) Tegn grafen
+        c) Hva betyr stigningstallet?
+        d) Hva betyr konstantleddet?
+      
+      hensikt: "Koble praktisk situasjon til matematisk modell"
+      
+      løsning:
+        a: "P(x) = 15x + 50"
+        b: "Graf med startpunkt (0,50) og stigning 15"
+        c: "Pris per kilometer"
+        d: "Startpris"
+      
+      tokens: ["{task:connect}", "{context:real-world}"]
+
+# === OVERFØRINGSOPPGAVER (15%) ===
+overføring:
+  beskrivelse: "Anvende konseptet i nye situasjoner"
+  
+  oppgaver:
+    - id: "o1"
+      tittel: "Modellering av vekst"
+      kontekst: "biologi"
+      
+      prompt: |
+        En plante er 12 cm høy og vokser 3 cm per uke.
+        
+        a) Lag en modell for plantens høyde
+        b) Når blir planten 30 cm høy?
+        c) Er denne modellen realistisk på lang sikt? Forklar.
+      
+      hensikt: "Bruke lineær modell og vurdere gyldighet"
+      
+      vurdering:
+        nivå1: "Lager korrekt modell"
+        nivå2: "Løser praktisk problem"
+        nivå3: "Reflekterer over modellens begrensninger"
+      
+      differensiering:
+        støtte: "Gi ferdig modell, la dem bruke den"
+        utvidelse: "Sammenlign med eksponentiell vekst"
+      
+      tokens: ["{task:transfer}", "{skill:modeling}"]
+      
+    - id: "o2"
+      tittel: "Problemløsning"
+      
+      prompt: |
+        To mobilselskaper har disse prisene:
+        - TeleNor: 99 kr/mnd + 1 kr per MB
+        - Telia: 149 kr/mnd + 0.50 kr per MB
+        
+        Analyser når hvert selskap er billigst.
+      
+      forventetTilnærming:
+        - "Sette opp funksjoner for begge"
+        - "Finne skjæringspunkt"
+        - "Tolke resultat praktisk"
+      
+      løsning:
+        funksjoner: "T1(x) = x + 99, T2(x) = 0.5x + 149"
+        skjæring: "Ved 100 MB"
+        konklusjon: "TeleNor billigst under 100 MB"
+      
+      tokens: ["{task:transfer}", "{skill:compare}", "{context:decision}"]
+
+# === TILLEGGSINFORMASJON ===
+
+# Progresjon gjennom oppgavene
+progresjon:
+  beskrivelse: "Anbefalt rekkefølge og gruppering"
+  
+  fase1_bygg_intuisjon:
+    oppgaver: ["u1", "u2"]
+    mål: "Forstå lineær sammenheng"
+    
+  fase2_utvikle_ferdigheter:
+    oppgaver: ["ø1", "ø2", "u3"]
+    mål: "Mestre grunnleggende prosedyrer"
+    
+  fase3_koble_forståelse:
+    oppgaver: ["k1", "k2", "ø3"]
+    mål: "Se sammenhenger"
+    
+  fase4_anvende:
+    oppgaver: ["o1", "o2", "u4"]
+    mål: "Bruke i nye situasjoner"
+
+# Felles ressurser
+ressurser:
+  digitaleVerktøy:
+    - "GeoGebra for graf-tegning"
+    - "Regneark for tabeller"
+    
+  malOgMaler:
+    - id: "stigningstall-mal"
+      fil: "maler/finn-stigningstall.pdf"
+    - id: "koordinatsystem"
+      fil: "maler/koordinatsystem-rutenett.pdf"
+      
+  visualiseringer:
+    - id: "animasjon-stigning"
+      fil: "media/stigningstall-animasjon.mp4"
+    - id: "interaktiv-parameter"
+      fil: "media/parameter-utforsker.html"
+
+# Vurderingskriterier
+vurdering:
+  formativ:
+    selvvurdering:
+      - "Jeg forstår sammenhengen mellom tabell og graf"
+      - "Jeg kan finne funksjonsuttrykk fra to punkter"
+      - "Jeg kan tolke lineære modeller praktisk"
+      
+    kammeratvurdering:
+      mal: "vurdering/kamerat-sjekkliste.pdf"
+      
+  summativ:
+    poengfordeling:
+      grunnleggende: 60  # Må ha for å bestå
+      anvendelse: 30     # For god måloppnåelse
+      refleksjon: 10     # For høy måloppnåelse
+
+# Notater for lærer
+lærernotater:
+  typiskeTidsbruk:
+    introduksjon: "10 min"
+    utforskning: "20 min"
+    øving: "10 min"
+    oppsummering: "5 min"
+    
+  vanligeUtfordringer:
+    - utfordring: "Blander stigningstall og konstantledd"
+      tips: "Bruk konsekvent 'start' og 'endring'"
+      
+    - utfordring: "Regner feil på negative stigningstall"
+      tips: "Visualiser som 'ned' på grafen"
+      
+  differentieringstips:
+    hurtige: "La dem lage egne oppgaver til hverandre"
+    strever: "Bruk alltid samme fargekoding"

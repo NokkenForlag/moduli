@@ -1,0 +1,69 @@
+# Bibliotek over matematiske objekter
+objects:
+  tall:
+    category: "grunnleggende"
+    properties:
+      - "representerer mengde"
+      - "kan ordnes på tallinje"
+      - "har aritmetiske egenskaper"
+    operations: ["addisjon", "subtraksjon", "multiplikasjon", "divisjon"]
+    specialCases: ["null", "negative", "desimaler", "brøk"]
+    enables: ["variabler", "funksjoner", "måling"]
+
+  variabel:
+    category: "algebraisk"
+    properties:
+      - "symbolsk representasjon"
+      - "kan ha ulike verdier"
+      - "følger algebraiske regler"
+    generalizes: ["tall"]
+    enables: ["uttrykk", "ligninger", "funksjoner"]
+
+  funksjon:
+    category: "relasjonell"
+    properties:
+      - "mapper input til output"
+      - "deterministisk"
+      - "kan visualiseres som graf"
+    requires: ["variabel", "koordinatsystem"]
+    types: ["lineær", "kvadratisk", "eksponentiell"]
+
+  ligning:
+    category: "relasjonell"
+    properties:
+      - "påstand om likhet"
+      - "kan løses"
+      - "har løsningsmengde"
+    requires: ["variabel", "likhet"]
+    types: ["lineær", "kvadratisk", "system"]
+
+  geometrisk_figur:
+    category: "romlig"
+    properties:
+      - "har form og størrelse"
+      - "kan måles"
+      - "har symmetriegenskaper"
+    subtypes:
+      polygon: ["trekant", "firkant", "mangekant"]
+      kurve: ["sirkel", "ellipse", "parabel"]
+    measurements: ["omkrets", "areal", "vinkel"]
+
+  vektor:
+    category: "romlig"
+    properties:
+      - "har størrelse og retning"
+      - "kan adderes"
+      - "kan skaleres"
+    requires: ["koordinatsystem", "tall"]
+    enables: ["transformasjoner", "fysikk-modellering"]
+
+# Relasjonstyper mellom objekter
+relationTypes:
+  generalizes: "Er en generalisering av"
+  specializes: "Er et spesialtilfelle av"
+  requires: "Forutsetter forståelse av"
+  enables: "Muliggjør forståelse av"
+  represents: "Representerer"
+  transforms: "Transformerer"
+```
+

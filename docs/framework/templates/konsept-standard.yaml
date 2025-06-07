@@ -1,0 +1,269 @@
+# Standard mal for Moduli-konsepter
+# Bruk denne for de fleste konsepter (30 min arbeid)
+
+# === IDENTIFIKASJON ===
+id: "XX-Y-Z"              # Format: [strand]-[nivå]-[nummer]
+title: "Konsepttittel"    # Teknisk navn
+displayTitle: "Tittel for elever"  # Brukervenlig navn
+slug: "url-vennlig-tittel"
+
+# === KLASSIFISERING ===
+level: 8                  # Klassetrinn (1-13)
+strand: algebra           # number|algebra|geometry|statistics|calculus
+difficulty:
+  cognitive: 3            # Kognitiv belastning (1-5)
+  technical: 2            # Teknisk kompleksitet (1-5)
+  overall: 2.5           # Samlet vanskelighet
+
+# === MATEMATISK OBJEKT ===
+mathematicalObject:
+  type: "funksjon"        # Fra objektbiblioteket
+  subtype: "lineær"       # Spesifisering
+  represents: "lineær sammenheng mellom størrelser"
+  properties:
+    - "konstant endring"
+    - "rett linje som graf"
+    - "entydig definert av to punkter"
+  operations:
+    - "evaluering"
+    - "komposisjon"
+    - "inversjon (hvis en-til-en)"
+  notation:
+    standard: "f(x) = ax + b"
+    alternatives: ["y = ax + b", "y = mx + c"]
+
+# === LÆRINGSMÅL ===
+learningGoals:
+  # Grunnleggende - alle skal oppnå
+  core:
+    - id: "lg-1"
+      goal: "Eleven kan gjenkjenne lineære sammenhenger"
+      observable: "Identifiserer konstant endring i tabell"
+      
+    - id: "lg-2"  
+      goal: "Eleven kan finne stigningstall og konstantledd"
+      observable: "Beregner a og b fra to punkter"
+      
+    - id: "lg-3"
+      goal: "Eleven kan tegne grafen til en lineær funksjon"
+      observable: "Plotter korrekt linje fra funksjonsuttrykk"
+      
+  # Utvidede - for viderekomne
+  extended:
+    - id: "lg-4"
+      goal: "Eleven kan tolke parametrene i kontekst"
+      observable: "Forklarer hva stigningstall betyr praktisk"
+      
+    - id: "lg-5"
+      goal: "Eleven kan løse praktiske problemer"
+      observable: "Modellerer reelle situasjoner"
+
+# === RELASJONER ===
+relations:
+  # Nødvendige forkunnskaper
+  requires:
+    - id: "a-1-1"
+      concept: "Variabler"
+      why: "Funksjoner bruker variabler"
+      
+    - id: "a-2-1"
+      concept: "Lineære ligninger"
+      why: "Samme algebraiske struktur"
+      
+    - id: "g-1-3"
+      concept: "Koordinatsystem"
+      why: "For grafisk representasjon"
+      
+  # Konsepter dette muliggjør
+  enables:
+    - id: "a-4-1"
+      concept: "Kvadratiske funksjoner"
+      how: "Generalisering til høyere grad"
+      
+    - id: "s-3-2"
+      concept: "Lineær regresjon"
+      how: "Tilpasning av lineær modell"
+      
+  # Relaterte konsepter
+  relatedTo:
+    - id: "g-3-1"
+      concept: "Linjens ligning"
+      relationship: "Samme objekt, ulik kontekst"
+
+# === PROGRESJON ===
+progression:
+  # Hvor eleven typisk starter
+  entry:
+    typicalUnderstanding: "Ser mønstre i tallrekker"
+    commonMisconceptions:
+      - "Tror alle sammenhenger er lineære"
+      - "Blander stigningstall og konstantledd"
+      
+  # Ønsket sluttnivå
+  exit:
+    targetUnderstanding: "Fleksibel bruk av lineære modeller"
+    indicators:
+      - "Veksler mellom representasjoner"
+      - "Gjenkjenner når lineær modell passer"
+      - "Tolker parametere i kontekst"
+
+# === INNHOLD ===
+content:
+  # Organisering av fagstoff
+  structure:
+    introduction: "Fra mønstre til funksjoner"
+    sections:
+      - "Hva kjennetegner lineære sammenhenger?"
+      - "Funksjonsuttrykket f(x) = ax + b"
+      - "Grafisk representasjon"
+      - "Praktiske anvendelser"
+    summary: "Lineære funksjoner som verktøy"
+    
+  # Nøkkelpoeng
+  keyPoints:
+    - "Konstant endring = lineær"
+    - "To punkter bestemmer linjen"
+    - "Stigningstall = endring i y / endring i x"
+    - "Konstantledd = y når x = 0"
+    
+  # Representasjoner å bruke
+  representations:
+    - type: "tabell"
+      purpose: "Vise konstant differanse"
+    - type: "graf"
+      purpose: "Visualisere som rett linje"
+    - type: "formel"
+      purpose: "Kompakt beskrivelse"
+    - type: "verbal"
+      purpose: "Kontekstuell forståelse"
+
+# === OPPGAVEBANK ===
+exercises:
+  # Fordeling følger 40/25/20/15
+  distribution:
+    exploration: 8        # 40% - Utforske mønstre
+    practice: 5          # 25% - Øve ferdigheter
+    connection: 4        # 20% - Koble representasjoner
+    transfer: 3          # 15% - Anvende i ny kontekst
+    
+  # Progresjon i vanskelighet
+  progression:
+    start: "Gjenkjenne lineære mønstre i tabeller"
+    middle: "Finne funksjonsuttrykk fra graf"
+    end: "Modellere reelle situasjoner"
+    
+  # Kontekster å bruke
+  contexts:
+    - "Økonomi (pris og mengde)"
+    - "Fysikk (fart og tid)"
+    - "Hverdagsliv (mobilabonnement)"
+    - "Geometri (omkrets og sidelengde)"
+
+# === DIFFERENSIERING ===
+differentiation:
+  # For elever som trenger støtte
+  support:
+    identified_needs:
+      - need: "Strever med abstrakte symboler"
+        strategy: "Start med talleksempler"
+        tools: ["Konkreter", "Fargekodet notasjon"]
+        
+      - need: "Mister oversikt"
+        strategy: "Én representasjon om gangen"
+        tools: ["Steg-for-steg mal", "Sjekkliste"]
+        
+    scaffolding_progression:
+      1: "Fullstendige eksempler"
+      2: "Delvis utfylte oppgaver"
+      3: "Hint og veiledning"
+      4: "Selvstendig med sjekkliste"
+      
+  # For elever som vil videre
+  extension:
+    opportunities:
+      - type: "dybde"
+        activity: "Utforske parameternes betydning"
+        outcome: "Predikere grafens utseende"
+        
+      - type: "bredde"
+        activity: "Sammenligne ulike modeller"
+        outcome: "Velge passende modell"
+        
+      - type: "kreativitet"
+        activity: "Lage egne modelleringsoppgaver"
+        outcome: "Demonstrere forståelse"
+
+# === VURDERING ===
+assessment:
+  # Formativ (underveis)
+  formative:
+    checkpoints:
+      - after: "Introduksjon"
+        check: "Kan eleven identifisere konstant endring?"
+        tool: "Hurtigsjekk med tabeller"
+        
+      - after: "Funksjonsuttrykk"
+        check: "Forstår eleven parametrene?"
+        tool: "Parameterjakt-aktivitet"
+        
+    self_assessment:
+      - "Jeg kan forklare hva som gjør en funksjon lineær"
+      - "Jeg kan finne funksjonsuttrykk fra graf"
+      - "Jeg kan bruke lineære funksjoner praktisk"
+      
+  # Summativ (avsluttende)
+  summative:
+    components:
+      - type: "conceptual"
+        weight: 40
+        example: "Forklar sammenhengen mellom..."
+        
+      - type: "procedural"
+        weight: 30
+        example: "Finn funksjonsuttrykket når..."
+        
+      - type: "application"
+        weight: 30
+        example: "Bruk lineær modell til å..."
+
+# === VANLIGE FEIL ===
+misconceptions:
+  - id: "mc-1"
+    error: "Blander x og y i stigningstall"
+    symptom: "Beregner Δx/Δy i stedet for Δy/Δx"
+    intervention: "Fysisk demonstrasjon av stigning"
+    prevention: "Konsekvent bruk av 'opp/bort'"
+    
+  - id: "mc-2"
+    error: "Tror b alltid er startverdi"
+    symptom: "Feiltolker b i praktiske situasjoner"
+    intervention: "Vis når x=0 ikke gir mening"
+    prevention: "Varierte kontekster fra start"
+
+# === TEKNISK INFO ===
+technical:
+  version: "1.0"
+  lastUpdated: "2025-06-07"
+  reviewStatus: "pending"
+  accessibility:
+    visualElements: "Alle grafer har tekstbeskrivelse"
+    mathNotation: "LaTeX med aria-labels"
+    colorUsage: "Ikke meningsbærende alene"
+  
+# === AI-METADATA ===
+aiMetadata:
+  semanticTags:
+    - "linear-function"
+    - "constant-rate"
+    - "first-degree"
+    - "straight-line"
+    
+  learningPathSuggestions:
+    before: ["coordinate-system", "variables", "patterns"]
+    after: ["quadratic-functions", "systems-of-equations"]
+    
+  supportTriggers:
+    - pattern: "confusion about parameters"
+      suggest: "parameter-exploration-activity"
+    - pattern: "calculation errors"
+      suggest: "step-by-step-template"

@@ -1,0 +1,376 @@
+# Moduli Token-referanse v4.1
+# Komplett oversikt over alle pedagogiske tokens
+
+# === OVERSIKT ===
+metadata:
+  version: "4.1"
+  lastUpdated: "2025-06-07"
+  totalTokens: 89
+  coreTokens: 30  # Essensielle for alle konsepter
+  categories: 8
+
+# === KJERNETOKENS (30) ===
+# Disse er essensielle og bør brukes i alle konsepter
+
+core:
+  # Variabler og verdier (5)
+  variables:
+    - token: "{var:*}"
+      description: "Markerer en variabel"
+      examples: ["{var:x}", "{var:n}", "{var:t}"]
+      usage: "Bruk for alle algebraiske variabler"
+      
+    - token: "{value:*}"
+      description: "Konkret verdi for variabel"
+      examples: ["{value:x=5}", "{value:n=10}"]
+      usage: "Når du setter inn tallverdi"
+      
+    - token: "{expr:*}"
+      description: "Algebraisk uttrykk"
+      examples: ["{expr:2x+3}", "{expr:x²-4}"]
+      usage: "For sammensatte uttrykk"
+      
+    - token: "{const:*}"
+      description: "Navngitt konstant"
+      examples: ["{const:π}", "{const:e}"]
+      usage: "For matematiske konstanter"
+      
+    - token: "{param:*}"
+      description: "Parameter i uttrykk"
+      examples: ["{param:a}", "{param:k}"]
+      usage: "Variabler som styrer form"
+
+  # Oppgavetyper (5)
+  tasks:
+    - token: "{task:explore}"
+      description: "Utforskningsoppgave"
+      pedagogical: "Bygger intuisjon"
+      guidance: "Ingen gitt metode"
+      
+    - token: "{task:practice}"
+      description: "Øvingsoppgave"
+      pedagogical: "Automatiserer ferdighet"
+      guidance: "Kjent prosedyre"
+      
+    - token: "{task:connect}"
+      description: "Koblingsoppgave"
+      pedagogical: "Ser sammenhenger"
+      guidance: "Flere representasjoner"
+      
+    - token: "{task:transfer}"
+      description: "Overføringsoppgave"
+      pedagogical: "Tester dybde"
+      guidance: "Ny kontekst"
+      
+    - token: "{task:create}"
+      description: "Skapende oppgave"
+      pedagogical: "Demonstrerer forståelse"
+      guidance: "Åpent format"
+
+  # Objektutvikling (5)
+  objectStages:
+    - token: "{object:action}"
+      stage: 1
+      description: "Handlingsstadium"
+      indicator: "Steg-for-steg prosess"
+      
+    - token: "{object:process}"
+      stage: 2
+      description: "Prosessstadium"
+      indicator: "Ser helhetlig prosedyre"
+      
+    - token: "{object:emerging}"
+      stage: 3
+      description: "Fremvoksende objekt"
+      indicator: "Begynner se som enhet"
+      
+    - token: "{object:formed}"
+      stage: 4
+      description: "Ferdig objekt"
+      indicator: "Manipulerer som enhet"
+      
+    - token: "{object:flexible}"
+      stage: 5
+      description: "Fleksibel bruk"
+      indicator: "Veksler perspektiv"
+
+  # Støtte og differensiering (5)
+  support:
+    - token: "{diff:support}"
+      description: "Generell støtte"
+      application: "Ekstra hjelp"
+      
+    - token: "{diff:extend}"
+      description: "Utvidelse"
+      application: "Ekstra utfordring"
+      
+    - token: "{scaffold:visual}"
+      description: "Visuell støtte"
+      examples: ["Diagram", "Fargekoding"]
+      
+    - token: "{scaffold:concrete}"
+      description: "Konkret støtte"
+      examples: ["Manipulativer", "Eksempler"]
+      
+    - token: "{scaffold:steps}"
+      description: "Prosedyrestøtte"
+      examples: ["Mal", "Algoritme"]
+
+  # Vurdering (5)
+  assessment:
+    - token: "{assess:understanding}"
+      focus: "Konseptuell forståelse"
+      method: "Forklaringsoppgaver"
+      
+    - token: "{assess:skill}"
+      focus: "Prosedyreferdighet"
+      method: "Beregningsoppgaver"
+      
+    - token: "{assess:reasoning}"
+      focus: "Resonnement"
+      method: "Argumentasjon"
+      
+    - token: "{check:progress}"
+      type: "Formativ"
+      when: "Underveis"
+      
+    - token: "{check:mastery}"
+      type: "Summativ"
+      when: "Avsluttende"
+
+  # Matematiske objekter (5)
+  mathObjects:
+    - token: "{math:number}"
+      category: "Grunnleggende"
+      
+    - token: "{math:variable}"
+      category: "Algebraisk"
+      
+    - token: "{math:function}"
+      category: "Relasjonell"
+      
+    - token: "{math:equation}"
+      category: "Relasjonell"
+      
+    - token: "{math:shape}"
+      category: "Geometrisk"
+
+# === UTVIDEDE TOKENS ===
+
+extended:
+  # Flere oppgavetyper
+  additionalTasks:
+    - token: "{task:investigate}"
+      description: "Dybdeundersøkelse"
+      similar: "{task:explore}"
+      difference: "Mer strukturert"
+      
+    - token: "{task:prove}"
+      description: "Bevisoppgave"
+      level: "Avansert"
+      
+    - token: "{task:model}"
+      description: "Modelleringsoppgave"
+      focus: "Virkelighetsnær"
+      
+    - token: "{task:analyze}"
+      description: "Analyseoppgave"
+      focus: "Kritisk tenkning"
+      
+    - token: "{task:compare}"
+      description: "Sammenligningsoppgave"
+      focus: "Likheter og forskjeller"
+
+  # Representasjoner
+  representations:
+    - token: "{repr:symbolic}"
+      type: "Symbolsk"
+      example: "f(x) = 2x + 3"
+      
+    - token: "{repr:graphical}"
+      type: "Grafisk"
+      example: "Koordinatsystem"
+      
+    - token: "{repr:numerical}"
+      type: "Numerisk"
+      example: "Tabell"
+      
+    - token: "{repr:verbal}"
+      type: "Verbal"
+      example: "Tekstbeskrivelse"
+      
+    - token: "{repr:physical}"
+      type: "Fysisk"
+      example: "Konkret modell"
+
+  # Kontekstmarkører
+  contexts:
+    - token: "{context:real-world}"
+      description: "Virkelighetsnær"
+      
+    - token: "{context:abstract}"
+      description: "Ren matematikk"
+      
+    - token: "{context:interdisciplinary}"
+      description: "Tverrfaglig"
+      
+    - token: "{context:historical}"
+      description: "Historisk"
+      
+    - token: "{context:cultural}"
+      description: "Kulturell"
+
+  # Kognitive nivåer
+  cognitive:
+    - token: "{level:remember}"
+      bloom: 1
+      description: "Huske fakta"
+      
+    - token: "{level:understand}"
+      bloom: 2
+      description: "Forstå konsept"
+      
+    - token: "{level:apply}"
+      bloom: 3
+      description: "Anvende kunnskap"
+      
+    - token: "{level:analyze}"
+      bloom: 4
+      description: "Analysere sammenhenger"
+      
+    - token: "{level:evaluate}"
+      bloom: 5
+      description: "Vurdere og kritisere"
+      
+    - token: "{level:create}"
+      bloom: 6
+      description: "Skape nytt"
+
+  # Ferdighetsmarkører
+  skills:
+    - token: "{skill:calculate}"
+      type: "Prosedyre"
+      
+    - token: "{skill:visualize}"
+      type: "Representasjon"
+      
+    - token: "{skill:generalize}"
+      type: "Abstraksjon"
+      
+    - token: "{skill:problem-solve}"
+      type: "Strategi"
+      
+    - token: "{skill:communicate}"
+      type: "Formidling"
+
+  # Læringsmarkører
+  learning:
+    - token: "{learn:discover}"
+      approach: "Induktiv"
+      
+    - token: "{learn:construct}"
+      approach: "Konstruktivistisk"
+      
+    - token: "{learn:practice}"
+      approach: "Behavioristisk"
+      
+    - token: "{learn:collaborate}"
+      approach: "Sosiokulturell"
+      
+    - token: "{learn:reflect}"
+      approach: "Metakognitiv"
+
+  # Feiltyper
+  errors:
+    - token: "{error:conceptual}"
+      description: "Misforståelse av konsept"
+      
+    - token: "{error:procedural}"
+      description: "Feil i fremgangsmåte"
+      
+    - token: "{error:computational}"
+      description: "Regnefeil"
+      
+    - token: "{error:notation}"
+      description: "Notasjonsfeil"
+      
+    - token: "{error:logic}"
+      description: "Logisk feil"
+
+  # Hint og veiledning
+  guidance:
+    - token: "{hint:direction}"
+      level: 1
+      description: "Peker i riktig retning"
+      
+    - token: "{hint:strategy}"
+      level: 2
+      description: "Foreslår fremgangsmåte"
+      
+    - token: "{hint:specific}"
+      level: 3
+      description: "Konkret hjelp"
+      
+    - token: "{guide:worked}"
+      type: "Gjennomarbeidet eksempel"
+      
+    - token: "{guide:template}"
+      type: "Mal å følge"
+
+# === BRUKSREGLER ===
+
+usage:
+  rules:
+    - "Bruk alltid kjernetokens når relevant"
+    - "Vær konsistent innen samme konsept"
+    - "Ikke overbruk tokens - kun når det tilfører verdi"
+    - "Kombiner tokens når hensiktsmessig"
+    
+  combinations:
+    example1: "{task:explore} + {scaffold:visual}"
+    meaning: "Visuelt støttet utforskning"
+    
+    example2: "{object:process} + {diff:support}"
+    meaning: "Støtte på prosessnivå"
+    
+    example3: "{assess:skill} + {check:progress}"
+    meaning: "Formativ ferdighetsvurdering"
+
+# === VALIDERING ===
+
+validation:
+  required:
+    perConcept:
+      minimum: 5
+      mustInclude:
+        - "Minst én {task:*}"
+        - "Minst én {object:*}"
+        - "Minst én vurderingstoken"
+        
+  patterns:
+    valid: "^\\{[a-z]+:[a-zA-Z\\-\\*]+\\}$"
+    
+  reserved:
+    - "{start}"
+    - "{end}"
+    - "{meta}"
+    - "{system}"
+
+# === AI-INSTRUKSJONER ===
+
+aiUsage:
+  parsing:
+    - "Tokens markerer pedagogisk funksjon"
+    - "Wildcard (*) betyr spesifikk instans"
+    - "Bruk til å forstå oppgavehensikt"
+    
+  generation:
+    rules:
+      - "Match token til pedagogisk mål"
+      - "Generer innhold som passer token"
+      - "Behold tokenstruktur i output"
+      
+  interpretation:
+    "{task:explore}": "Lag åpen oppgave uten gitt metode"
+    "{object:formed}": "Eleven ser konseptet som manipulerbart objekt"
+    "{diff:extend}": "Gi utfordring utover grunnleggende"

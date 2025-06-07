@@ -1,0 +1,32 @@
+# Minimal mal - kun det essensielle
+id: "XX-Y-Z"
+title: "Konsepttittel"
+level: 8 # klassetrinn
+strand: algebra # number|algebra|geometry|statistics|calculus
+
+# NYTT: Matematisk objekt (obligatorisk)
+mathematicalObject:
+  type: "navn på objekttype"
+  represents: "hva objektet representerer"
+  properties:
+    - "egenskap 1"
+    - "egenskap 2"
+
+# Læringsmål
+learningGoals:
+  - "Eleven kan..."
+  - "Eleven forstår..."
+
+# Relasjoner
+relations:
+  requires: ["id-1", "id-2"] # Forkunnskaper
+  enables: ["id-3", "id-4"] # Muliggjør
+
+# Basis oppgavefordeling
+taskDistribution:
+  exploration: 40
+  practice: 25
+  connection: 20
+  transfer: 15
+```
+

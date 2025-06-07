@@ -1,0 +1,163 @@
+/* Moduli Design System - Global Styles */
+
+/* Design tokens */
+@import './tokens/base.css';
+@import './tokens/layout.css';
+
+/* Theme definitions */
+@import './themes/light.css';
+@import './themes/dark.css';
+
+/* Base reset and globals */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: var(--line-height-base);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transition: background-color var(--transition-base), color var(--transition-base);
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: var(--line-height-tight);
+    color: var(--color-text);
+  }
+  
+  h1 { font-size: var(--font-size-3xl); }
+  h2 { font-size: var(--font-size-2xl); }
+  h3 { font-size: var(--font-size-xl); }
+  h4 { font-size: var(--font-size-lg); }
+  h5 { font-size: var(--font-size-base); }
+  h6 { font-size: var(--font-size-sm); }
+  
+  /* Links */
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Code */
+  code, pre {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+  
+  /* Selection */
+  ::selection {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+  
+  /* Focus visible */
+  :focus {
+    outline: none;
+  }
+  
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+    transition: background var(--transition-fast);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-tertiary);
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Text utilities */
+  .text-primary { color: var(--color-primary); }
+  .text-secondary { color: var(--color-text-secondary); }
+  .text-tertiary { color: var(--color-text-tertiary); }
+  
+  /* Background utilities */
+  .bg-surface { background-color: var(--color-surface); }
+  .bg-surface-secondary { background-color: var(--color-surface-secondary); }
+  .bg-surface-elevated { background-color: var(--color-surface-elevated); }
+  
+  /* Spacing utilities */
+  .p-xs { padding: var(--space-xs); }
+  .p-sm { padding: var(--space-sm); }
+  .p-md { padding: var(--space-md); }
+  .p-lg { padding: var(--space-lg); }
+  .p-xl { padding: var(--space-xl); }
+  
+  /* Layout utilities */
+  .container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+  }
+  
+  /* Shadow utilities */
+  .shadow-sm { box-shadow: var(--shadow-sm); }
+  .shadow-md { box-shadow: var(--shadow-md); }
+  .shadow-lg { box-shadow: var(--shadow-lg); }
+  .shadow-xl { box-shadow: var(--shadow-xl); }
+  
+  /* Radius utilities */
+  .rounded-sm { border-radius: var(--radius-sm); }
+  .rounded-md { border-radius: var(--radius-md); }
+  .rounded-lg { border-radius: var(--radius-lg); }
+  .rounded-xl { border-radius: var(--radius-xl); }
+  .rounded-full { border-radius: var(--radius-full); }
+  
+  /* Transition utilities */
+  .transition-fast { transition: all var(--transition-fast); }
+  .transition-base { transition: all var(--transition-base); }
+  .transition-slow { transition: all var(--transition-slow); }
+}
+
+/* Component imports */
+@import './components/navigation.css';
+@import './components/buttons.css';
+@import './components/cards.css';
