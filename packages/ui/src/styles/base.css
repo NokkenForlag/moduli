@@ -1,0 +1,16 @@
+/* Base reset and typography */
+@import 'tailwindcss/base';
+
+/* Custom base styles */
+:root {
+  /* Will be populated by theme system */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

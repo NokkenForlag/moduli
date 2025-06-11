@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Moduli Concept Schema",
+  "type": "object",
+  "required": ["id", "title", "course", "cluster"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "course": {
+      "type": "string"
+    },
+    "cluster": {
+      "type": "string"
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type"],
+            "properties": {
+              "id": { "type": "string" },
+              "type": { "enum": ["must-understand", "helpful", "recommended"] },
+              "reason": { "type": "string" }
+            }
+          }
+        },
+        "enables": {
+          "type": "array"
+        }
+      }
+    },
+    "graph_tags": {
+      "type": "object",
+      "properties": {
+        "node_type": { "type": "string" },
+        "visual_category": { "type": "string" },
+        "timeline_position": { "type": "string" },
+        "size_weight": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

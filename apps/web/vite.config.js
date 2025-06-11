@@ -1,30 +1,25 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 
 export default defineConfig({
-  plugins: [sveltekit(), tailwindcss()],
-
-  // Server configuration for development
+  plugins: [sveltekit()],
+  resolve: {
+    alias: {
+      '@moduli/ui': path.resolve('./../../packages/ui/src'),
+      '@moduli/types': path.resolve('./../../packages/types/src'),
+      '@moduli/content': path.resolve('./../../packages/content/src'),
+      '@moduli/config': path.resolve('./../../packages/config/src'),
+      '@moduli/utils': path.resolve('./../../packages/utils/src'),
+    }
+  },
   server: {
-    port: 5173,
-    strictPort: false,
-    host: true
+    fs: {
+      allow: ['../..']
+    }
   },
-
-  // Preview configuration
-  preview: {
-    port: 4173,
-    strictPort: false
-  },
-
-  // Build optimizations
-  build: {
-    target: 'esnext'
-  },
-
-  // Optimizations
-  optimizeDeps: {
-    include: ['lucide-svelte', 'katex']
+  css: {
+    // Disable CSS modules and PostCSS for now
+    modules: false
   }
 });

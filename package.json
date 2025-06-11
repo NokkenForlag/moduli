@@ -24,16 +24,21 @@
     "validate:content": "pnpm --filter @moduli/content validate",
     "validate:graph": "pnpm --filter @moduli/graph validate",
     "validate:types": "tsc --noEmit",
-    "graph:build": "pnpm --filter @moduli/content build:graph",
     "graph:visualize": "pnpm --filter graph-tools visualize",
-    "graph:analyze": "pnpm --filter @moduli/graph analyze",
     "content:new": "pnpm --filter @moduli/content new",
     "content:validate": "pnpm --filter @moduli/content validate",
     "clean": "pnpm run -r clean && rm -rf node_modules",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "pnpm build && changeset publish",
-    "prepare": "husky"
+    "prepare": "husky",
+    "graph:dev": "concurrently \"pnpm --filter @moduli/graph watch\" \"pnpm --filter web dev\"",
+    "graph:build": "pnpm --filter @moduli/graph build",
+    "graph:test": "pnpm --filter @moduli/graph test",
+    "rive:preview": "open apps/web/static/assets/rive/graph/graph-node.riv",
+    "graph:analyze": "pnpm --filter @moduli/graph analyze",
+    "graph:benchmark": "pnpm --filter @moduli/graph benchmark"
+  
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",

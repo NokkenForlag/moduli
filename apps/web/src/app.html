@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="no" data-theme="%sveltekit.theme%">
+<html lang="no" class="%sveltekit.theme%">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Moduli - Matematisk læringsplattform" />
     
     <!-- Prevent theme flicker -->
     <script>
-      try {
-        const saved = localStorage.getItem('moduli-theme');
-        if (saved) {
-          const state = JSON.parse(saved);
-          const theme = state.temporal && new Date(state.temporal.expires) > new Date() 
-            ? state.temporal.theme 
-            : state.base;
-          document.documentElement.setAttribute('data-theme', theme);
-        }
-      } catch (e) {
-        // Fail silently
-      }
+      (function() {
+        // Immediately set theme to prevent flash
+        const savedTheme = localStorage.getItem('moduli-theme-preference');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const theme = savedTheme || systemTheme;
+        
+        document.documentElement.classList.add('theme-' + theme);
+        document.documentElement.style.colorScheme = theme;
+        
+        // Add no-transitions class to prevent transition on load
+        document.documentElement.classList.add('no-transitions');
+        
+        // Remove no-transitions after load
+        window.addEventListener('load', () => {
+          requestAnimationFrame(() => {
+            document.documentElement.classList.remove('no-transitions');
+          });
+        });
+      })();
     </script>
     
     %sveltekit.head%

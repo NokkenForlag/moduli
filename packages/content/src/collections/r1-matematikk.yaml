@@ -1,0 +1,35 @@
+id: "r1-matematikk"
+title: "Matematikk R1"
+description: "Realfagsmatematikk med fokus på analyse og modellering"
+version: "1.0"
+last_updated: "2025-01-09"
+
+# Kursinformasjon
+course_code: "MAT03-02"
+level: "vgs3"
+subject: "matematikk"
+type: "programfag"
+credits: 5
+hours: 140
+
+# Overordnet struktur
+clusters:
+  - "grenser-og-kontinuitet"
+  - "derivasjon-grunnlag"
+  - "funksjonsanalyse"
+  - "eksponential-logaritme"
+  - "vektorer-geometri"
+  - "modellering"
+
+# Vurderingsform
+assessment:
+  exam_type: "skriftlig"
+  exam_duration: 300  # minutter
+  aids_allowed: ["kalkulator", "formelark"]
+  
+# Metadata
+metadata:
+  curriculum: "LK20"
+  language: "nb-NO"
+  target_audience: "elever-vgs3"
+  prerequisites: ["matematikk-1t"]

@@ -8,21 +8,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "types": ["svelte", "vite/client"]
-  },
-  "include": [
-    "./.svelte-kit/ambient.d.ts",
-    "./.svelte-kit/types/**/$types.d.ts",
-    "./src/**/*.js",
-    "./src/**/*.ts",
-    "./src/**/*.svelte",
-    "./tests/**/*.js",
-    "./tests/**/*.ts",
-    "./tests/**/*.svelte"
-  ],
-  "exclude": ["node_modules"]
+    "strict": true
+  }
 }

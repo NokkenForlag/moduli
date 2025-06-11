@@ -1,0 +1,51 @@
+id: "r1-standard-path"
+title: "Standard læringsvei R1"
+description: "Tradisjonell progresjon gjennom R1-pensum"
+version: "1.0"
+
+# Faser i læringsveien
+phases:
+  - id: "foundation"
+    title: "Grunnlag"
+    weeks: 3
+    concepts:
+      - "r1-grenseverdi-funksjon"
+      - "r1-kontinuitet-definisjon"
+      - "r1-differenskvotient"
+      
+  - id: "core-calculus"
+    title: "Kjernepensum"
+    weeks: 6
+    concepts:
+      - "r1-derivasjon-definisjon"
+      - "r1-derivasjonsregler-potens"
+      - "r1-derivasjonsregler-sum"
+      - "r1-tangentlinje"
+      
+  - id: "applications"
+    title: "Anvendelser"
+    weeks: 4
+    concepts:
+      - "r1-funksjonsdrøfting"
+      - "r1-optimering"
+      - "r1-relaterte-størrelser"
+
+# Milepæler og vurdering
+milestones:
+  - after_phase: "foundation"
+    assessment: "grunnlag-test"
+    required_score: 0.7
+    
+  - after_phase: "core-calculus"
+    assessment: "midterm-prøve"
+    required_score: 0.6
+
+# Differensiering
+adaptations:
+  fast_track:
+    skip_if_score_above: 0.85
+    concepts_to_skip: ["review-concepts"]
+    
+  extra_support:
+    trigger_if_score_below: 0.5
+    additional_concepts: ["ekstra-øving-*"]

@@ -1,173 +1,199 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-// ===== Core Graph Types =====
-
-/**
- * Unique identifier for a concept (e.g., "a-1-1", "g-2-3")
- */
+// Base types
 export type ConceptId = string;
-
-/**
- * Core metadata that all graph nodes share
- */
-export interface NodeMetadata {
-  createdAt: Date;
-  updatedAt: Date;
-  version: number;
-  tags?: string[];
+export type CollectionId = string;
+export type PathId = string;
+// Enums
+export enum RelationType {
+  REQUIRES = 'requires',
+  TEACHES = 'teaches',
+  PRACTICES = 'practices',
+  APPLIES = 'applies',
+  EXTENDS = 'extends',
+  CONTRADICTS = 'contradicts',
+  SUPPORTS = 'supports',
+  PART_OF = 'part_of',
+  LEADS_TO = 'leads_to',
+  SIMILAR_TO = 'similar_to',
 }
 
-/**
- * A concept represents a single learning unit in the knowledge graph
- */
+export enum NodeType {
+  CONCEPT = 'concept',
+  COLLECTION = 'collection',
+  PATH = 'path',
+}
+
+export enum DifficultyLevel {
+  BEGINNER = 'beginner',
+  INTERMEDIATE = 'intermediate',
+  ADVANCED = 'advanced',
+  EXPERT = 'expert',
+}
+
+// Node metadata
+export interface NodeMetadata {
+  difficulty?: DifficultyLevel;
+  timeEstimate?: number; // minutes
+  prerequisites?: ConceptId[];
+  tags?: string[];
+  weight?: number;
+  position?: {
+    x: number;
+    y: number;
+  };
+}
+
+// Core graph types
 export interface Concept {
   id: ConceptId;
+  type: NodeType.CONCEPT;
   title: string;
   description?: string;
-  content: string; // Markdown content
-  metadata: NodeMetadata & {
-    difficulty?: number; // 1-5
-    estimatedTime?: number; // minutes
-    prerequisites?: ConceptId[];
-    outcomes?: string[];
-  };
+  metadata?: NodeMetadata;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-/**
- * Types of relationships between concepts
- */
-export enum RelationType {
-  PREREQUISITE = "prerequisite",
-  RELATED = "related",
-  EXTENDS = "extends",
-  ALTERNATIVE = "alternative",
-  PRACTICAL_APPLICATION = "practical_application",
-  THEORETICAL_BASIS = "theoretical_basis",
-}
-
-/**
- * A relation defines how two concepts are connected
- */
 export interface ConceptRelation {
-  source: ConceptId;
-  target: ConceptId;
+  from: ConceptId;
+  to: ConceptId;
   type: RelationType;
-  strength?: number; // 0-1, how strong the connection is
-  metadata?: {
-    description?: string;
-    bidirectional?: boolean;
-  };
+  weight?: number;
+  metadata?: Record<string, unknown>;
 }
 
-/**
- * A collection groups related concepts together
- */
 export interface Collection {
-  id: string;
+  id: CollectionId;
   title: string;
   description?: string;
-  members: ConceptId[];
-  metadata: {
-    order?: "sequential" | "parallel" | "custom";
+  concepts: ConceptId[];
+  metadata?: {
     theme?: string;
     icon?: string;
+    color?: string;
   };
 }
 
-/**
- * A learning path is a curated sequence through the graph
- */
 export interface LearningPath {
-  id: string;
+  id: PathId;
   title: string;
-  description: string;
-  concepts: ConceptId[];
-  prerequisites: ConceptId[];
-  outcomes: string[];
-  metadata: {
-    difficulty: number;
-    estimatedTime: number; // total minutes
+  description?: string;
+  steps: ConceptId[];
+  metadata?: {
+    estimatedTime?: number;
+    difficulty?: DifficultyLevel;
     targetAudience?: string;
   };
 }
 
-// ===== Zod Schemas for Validation =====
+// Graph structure
+export interface ConceptGraph {
+  nodes: Map<ConceptId, Concept>;
+  edges: ConceptRelation[];
+  collections: Map<CollectionId, Collection>;
+  paths: Map<PathId, LearningPath>;
+}
 
+// Zod schemas for validation
 export const NodeMetadataSchema = z.object({
-  createdAt: z.date(),
-  updatedAt: z.date(),
-  version: z.number().int().positive(),
+  difficulty: z.nativeEnum(DifficultyLevel).optional(),
+  timeEstimate: z.number().positive().optional(),
+  prerequisites: z.array(z.string()).optional(),
   tags: z.array(z.string()).optional(),
+  weight: z.number().optional(),
+  position: z.object({
+    x: z.number(),
+    y: z.number(),
+  }).optional(),
 });
 
 export const ConceptSchema = z.object({
-  id: z.string().regex(/^[a-z]-\d+-\d+$/, "Invalid concept ID format"),
-  title: z.string().min(1),
+  id: z.string(),
+  type: z.literal(NodeType.CONCEPT),
+  title: z.string(),
   description: z.string().optional(),
-  content: z.string(),
-  metadata: NodeMetadataSchema.extend({
-    difficulty: z.number().int().min(1).max(5).optional(),
-    estimatedTime: z.number().positive().optional(),
-    prerequisites: z.array(z.string()).optional(),
-    outcomes: z.array(z.string()).optional(),
-  }),
+  metadata: NodeMetadataSchema.optional(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
 });
 
 export const RelationTypeSchema = z.nativeEnum(RelationType);
 
 export const ConceptRelationSchema = z.object({
-  source: z.string(),
-  target: z.string(),
+  from: z.string(),
+  to: z.string(),
   type: RelationTypeSchema,
-  strength: z.number().min(0).max(1).optional(),
-  metadata: z
-    .object({
-      description: z.string().optional(),
-      bidirectional: z.boolean().optional(),
-    })
-    .optional(),
+  weight: z.number().optional(),
+  metadata: z.record(z.unknown()).optional(),
 });
 
 export const CollectionSchema = z.object({
   id: z.string(),
-  title: z.string().min(1),
+  title: z.string(),
   description: z.string().optional(),
-  members: z.array(z.string()),
+  concepts: z.array(z.string()),
   metadata: z.object({
-    order: z.enum(["sequential", "parallel", "custom"]).optional(),
     theme: z.string().optional(),
     icon: z.string().optional(),
-  }),
+    color: z.string().optional(),
+  }).optional(),
 });
 
 export const LearningPathSchema = z.object({
   id: z.string(),
-  title: z.string().min(1),
-  description: z.string(),
-  concepts: z.array(z.string()),
-  prerequisites: z.array(z.string()),
-  outcomes: z.array(z.string()),
+  title: z.string(),
+  description: z.string().optional(),
+  steps: z.array(z.string()),
   metadata: z.object({
-    difficulty: z.number().int().min(1).max(5),
-    estimatedTime: z.number().positive(),
+    estimatedTime: z.number().optional(),
+    difficulty: z.nativeEnum(DifficultyLevel).optional(),
     targetAudience: z.string().optional(),
-  }),
+  }).optional(),
 });
 
-// ===== Type Guards =====
+// Type guards
+export function isConcept(node: unknown): node is Concept {
+  return ConceptSchema.safeParse(node).success;
+}
 
-export const isConcept = (obj: unknown): obj is Concept => {
-  return ConceptSchema.safeParse(obj).success;
-};
+export function isConceptRelation(relation: unknown): relation is ConceptRelation {
+  return ConceptRelationSchema.safeParse(relation).success;
+}
 
-export const isConceptRelation = (obj: unknown): obj is ConceptRelation => {
-  return ConceptRelationSchema.safeParse(obj).success;
-};
+export function isCollection(collection: unknown): collection is Collection {
+  return CollectionSchema.safeParse(collection).success;
+}
 
-export const isCollection = (obj: unknown): obj is Collection => {
-  return CollectionSchema.safeParse(obj).success;
-};
+export function isLearningPath(path: unknown): path is LearningPath {
+  return LearningPathSchema.safeParse(path).success;
+}
 
-export const isLearningPath = (obj: unknown): obj is LearningPath => {
-  return LearningPathSchema.safeParse(obj).success;
-};
+// Graph operations interface
+export interface GraphOperations {
+  addNode(concept: Concept): void;
+  removeNode(id: ConceptId): void;
+  addEdge(relation: ConceptRelation): void;
+  removeEdge(from: ConceptId, to: ConceptId): void;
+  getNeighbors(id: ConceptId): ConceptId[];
+  getIncomingEdges(id: ConceptId): ConceptRelation[];
+  getOutgoingEdges(id: ConceptId): ConceptRelation[];
+  findPath(from: ConceptId, to: ConceptId): ConceptId[] | null;
+  getSubgraph(ids: ConceptId[]): ConceptGraph;
+}
+
+// Types for graphology integration
+export interface GraphNode extends Concept {
+  // Additional properties for graph visualization
+  x?: number;
+  y?: number;
+  size?: number;
+  color?: string;
+}
+
+export interface GraphEdge extends ConceptRelation {
+  // Additional properties for edge visualization
+  size?: number;
+  color?: string;
+  label?: string;
+}

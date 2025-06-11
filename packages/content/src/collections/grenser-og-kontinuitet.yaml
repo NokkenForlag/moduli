@@ -1,0 +1,24 @@
+id: "grenser-og-kontinuitet"
+title: "Grenser og kontinuitet"
+parent: "r1-matematikk"
+description: "Grunnleggende analyse med grenseverdier og kontinuitet"
+version: "1.0"
+
+visual:
+  color: "#FF6B6B"
+  icon: "limit"
+  position:
+    x: 100
+    y: 200
+  
+concepts:
+  - "r1-grenseverdi-funksjon"
+
+learning_objectives:
+  - "Forstå grenseverdibegrepet intuitivt og formelt"
+  - "Kunne beregne grenser algebraisk og grafisk"
+  
+progression:
+  entry_level: 2
+  exit_level: 4
+  estimated_hours: 15

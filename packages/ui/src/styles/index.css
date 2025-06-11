@@ -1,0 +1,108 @@
+/* packages/ui/src/styles/index.css */
+
+/* Base styles and resets */
+@import './base.css';
+
+/* Glass morphism utilities */
+@import './glass.css';
+
+/* Tailwind layers */
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Animation keyframes */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slide-up {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from { 
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out {
+  from { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  to { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glass-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+  }
+}
+
+@keyframes glass-out {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in { animation: fade-in var(--duration-normal) var(--easing-out); }
+.animate-fade-out { animation: fade-out var(--duration-normal) var(--easing-in); }
+.animate-slide-up { animation: slide-up var(--duration-normal) var(--easing-out); }
+.animate-slide-down { animation: slide-down var(--duration-normal) var(--easing-out); }
+.animate-scale-in { animation: scale-in var(--duration-fast) var(--easing-out); }
+.animate-scale-out { animation: scale-out var(--duration-fast) var(--easing-in); }
+.animate-float { animation: float 3s var(--easing-inOut) infinite; }
+.animate-glass-in { animation: glass-in var(--duration-slow) var(--easing-out); }
+.animate-glass-out { animation: glass-out var(--duration-slow) var(--easing-in); }

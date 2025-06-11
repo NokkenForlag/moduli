@@ -17,6 +17,8 @@
     "@sveltejs/kit": "^2.5.0",
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "@tailwindcss/vite": "^4.1.8",
+    "@types/katex": "^0.16.7",
+    "@types/marked": "^6.0.0",
     "@types/node": "^20.11.0",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
@@ -28,8 +30,11 @@
     "vite": "^5.0.12"
   },
   "dependencies": {
-    "katex": "^0.16.9",
-    "lucide-svelte": "^0.513.0"
+    "@moduli/ui": "workspace:*",
+    "@vercel/analytics": "^1.5.0",
+    "katex": "^0.16.22",
+    "lucide-svelte": "^0.513.0",
+    "marked": "^15.0.12"
   },
   "engines": {
     "node": ">=18.0.0"

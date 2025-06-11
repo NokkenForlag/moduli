@@ -1,0 +1,27 @@
+id: "derivasjon-grunnlag"
+title: "Derivasjon"
+parent: "r1-matematikk"
+description: "Fra endringshastighet til derivasjon"
+version: "1.0"
+
+visual:
+  color: "#4ECDC4"
+  icon: "tangent"
+  position:
+    x: 300
+    y: 200
+
+concepts:
+  - "r1-derivasjon-definisjon"
+
+learning_objectives:
+  - "Forstå derivasjon som momentan endringshastighet"
+  - "Mestre derivasjonsreglene"
+
+dependencies:
+  requires: ["grenser-og-kontinuitet"]
+  
+progression:
+  entry_level: 3
+  exit_level: 4
+  estimated_hours: 20

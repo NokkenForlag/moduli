@@ -1,0 +1,122 @@
+[{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '@moduli/types' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 4,
+	"startColumn": 43,
+	"endLineNumber": 4,
+	"endColumn": 58
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '$lib/components/graph/ConceptGraph.svelte' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 5,
+	"startColumn": 28,
+	"endLineNumber": 5,
+	"endColumn": 71
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '$lib/components/navigation/LearningPathIndicator.svelte' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 6,
+	"startColumn": 37,
+	"endLineNumber": 6,
+	"endColumn": 94
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '$lib/components/content/RelatedConcepts.svelte' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 7,
+	"startColumn": 31,
+	"endLineNumber": 7,
+	"endColumn": 79
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '$lib/components/content/ConceptContent.svelte' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 8,
+	"startColumn": 30,
+	"endLineNumber": 8,
+	"endColumn": 77
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '$lib/components/exercises/ExerciseSection.svelte' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 9,
+	"startColumn": 31,
+	"endLineNumber": 9,
+	"endColumn": 81
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "2307",
+	"severity": 8,
+	"message": "Cannot find module '$lib/stores/themeStore' or its corresponding type declarations.",
+	"source": "ts",
+	"startLineNumber": 10,
+	"startColumn": 30,
+	"endLineNumber": 10,
+	"endColumn": 54
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "a11y-click-events-have-key-events",
+	"severity": 4,
+	"message": "A11y: visible, non-interactive elements with an on:click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as <button type=\"button\"> or <a> might be more appropriate. See https://svelte.dev/docs/accessibility-warnings#a11y-click-events-have-key-events for more details.",
+	"source": "svelte",
+	"startLineNumber": 201,
+	"startColumn": 5,
+	"endLineNumber": 215,
+	"endColumn": 10
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "a11y-no-static-element-interactions",
+	"severity": 4,
+	"message": "A11y: <div> with click handler must have an ARIA role",
+	"source": "svelte",
+	"startLineNumber": 201,
+	"startColumn": 5,
+	"endLineNumber": 215,
+	"endColumn": 10
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "a11y-click-events-have-key-events",
+	"severity": 4,
+	"message": "A11y: visible, non-interactive elements with an on:click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as <button type=\"button\"> or <a> might be more appropriate. See https://svelte.dev/docs/accessibility-warnings#a11y-click-events-have-key-events for more details.",
+	"source": "svelte",
+	"startLineNumber": 202,
+	"startColumn": 7,
+	"endLineNumber": 214,
+	"endColumn": 12
+},{
+	"resource": "/Users/kenrobertklaveness/Documents/GitHub/Nokken/moduli/apps/web/src/routes/konsept/[id]/+page.svelte",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "a11y-no-static-element-interactions",
+	"severity": 4,
+	"message": "A11y: <div> with click handler must have an ARIA role",
+	"source": "svelte",
+	"startLineNumber": 202,
+	"startColumn": 7,
+	"endLineNumber": 214,
+	"endColumn": 12
+}]
