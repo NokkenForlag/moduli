@@ -1,1 +1,18 @@
-node_modules
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs  
+dist/
+.svelte-kit/
+.vercel/
+*.tsbuildinfo
+
+# Legacy - vi beholder men ignorerer builds
+legacy/**/node_modules/
+legacy/**/dist/
+legacy/**/.svelte-kit/
+
+# Temp
+*.log
+.DS_Store

@@ -1,61 +1,11 @@
 {
-  "name": "moduli",
-  "version": "2.0.0",
+  "name": "moduli-foundation",
   "private": true,
-  "type": "module",
-  "packageManager": "pnpm@9.1.0",
-  "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=9.0.0"
-  },
   "scripts": {
-    "ai:context": "node tools/ai-context/generate.js",
-    "ai:prepare": "pnpm ai:context && echo 'Ready for AI session!'",
-    "dev": "pnpm --filter web dev",
-    "build": "pnpm run -r build",
-    "preview": "pnpm --filter web preview",
-    "test": "pnpm run -r test",
-    "test:unit": "pnpm run -r test:unit",
-    "test:integration": "pnpm run -r test:integration",
-    "lint": "pnpm run -r lint",
-    "format": "prettier --write .",
-    "typecheck": "echo 'skipping typecheck (no TS)' && exit 0",
-    "validate": "pnpm run validate:content && pnpm run validate:graph && pnpm run validate:types",
-    "validate:content": "pnpm --filter @moduli/content validate",
-    "validate:graph": "pnpm --filter @moduli/graph validate",
-    "validate:types": "tsc --noEmit",
-    "graph:visualize": "pnpm --filter graph-tools visualize",
-    "content:new": "pnpm --filter @moduli/content new",
-    "content:validate": "pnpm --filter @moduli/content validate",
-    "clean": "pnpm run -r clean && rm -rf node_modules",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "pnpm build && changeset publish",
-    "prepare": "husky",
-    "graph:dev": "concurrently \"pnpm --filter @moduli/graph watch\" \"pnpm --filter web dev\"",
-    "graph:build": "pnpm --filter @moduli/graph build",
-    "graph:test": "pnpm --filter @moduli/graph test",
-    "rive:preview": "open apps/web/static/assets/rive/graph/graph-node.riv",
-    "graph:analyze": "pnpm --filter @moduli/graph analyze",
-    "graph:benchmark": "pnpm --filter @moduli/graph benchmark"
-  
+    "dev": "pnpm --filter web-foundation dev",
+    "build": "pnpm -r build"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@types/node": "^20.14.0",
-    "@typescript-eslint/eslint-plugin": "^8.33.1",
-    "@typescript-eslint/parser": "^8.33.1",
-    "eslint": "^9.28.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-svelte": "^3.9.1",
-    "globals": "^16.2.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.1.0",
-    "prettier": "^3.5.3",
-    "prettier-plugin-svelte": "^3.4.0",
-    "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
+    "typescript": "^5.3.3"
   }
 }
