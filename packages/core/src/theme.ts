@@ -1,5 +1,4 @@
 // Minimal theme system for Moduli
-
 export interface Theme {
   name: string;
   colors: {
@@ -31,12 +30,35 @@ export interface Theme {
 }
 
 export const themes: Record<string, Theme> = {
+  light: {
+    name: 'light',
+    colors: {
+      bgPrimary: 'rgb(255 255 255 / 0.7)',   // white/70
+      bgSecondary: 'rgb(249 250 251 / 0.7)', // gray-50/70
+      bgTertiary: 'rgb(243 244 246 / 0.6)',  // gray-100/60
+      textPrimary: 'rgb(17 24 39 / 0.9)',    // gray-900/90
+      textSecondary: 'rgb(55 65 81 / 0.8)',  // gray-700/80
+      textMuted: 'rgb(107 114 128 / 0.7)',   // gray-500/70
+      accent: 'rgb(79 70 229)',               // indigo-600
+      accentHover: 'rgb(67 56 202)',          // indigo-700
+      success: 'rgb(16 185 129)',             // emerald-500
+      warning: 'rgb(245 158 11)',             // amber-500
+      error: 'rgb(239 68 68)'                 // red-500
+    },
+    blur: {
+      sm: '4px',
+      md: '8px', 
+      lg: '12px',
+      xl: '16px'
+    }
+  },
+  
   dark: {
     name: 'dark',
     colors: {
-      bgPrimary: 'rgb(10 10 10 / 0.8)',      // neutral-950/80
-      bgSecondary: 'rgb(23 23 23 / 0.8)',    // neutral-900/80
-      bgTertiary: 'rgb(38 38 38 / 0.8)',     // neutral-800/80
+      bgPrimary: 'rgb(10 10 10 / 0.6)',      // neutral-950/60 - mer transparent
+      bgSecondary: 'rgb(23 23 23 / 0.6)',    // neutral-900/60
+      bgTertiary: 'rgb(38 38 38 / 0.5)',     // neutral-800/50
       textPrimary: 'rgb(250 250 250 / 0.9)', // neutral-50/90
       textSecondary: 'rgb(229 229 229 / 0.8)', // neutral-200/80
       textMuted: 'rgb(163 163 163 / 0.7)',   // neutral-400/70
@@ -57,9 +79,9 @@ export const themes: Record<string, Theme> = {
   cosmic: {
     name: 'cosmic',
     colors: {
-      bgPrimary: 'rgb(13 7 30 / 0.8)',       // Deep purple
-      bgSecondary: 'rgb(25 15 45 / 0.8)',    
-      bgTertiary: 'rgb(38 23 68 / 0.8)',     
+      bgPrimary: 'rgb(13 7 30 / 0.5)',       // Deep purple - mer transparent
+      bgSecondary: 'rgb(25 15 45 / 0.5)',    
+      bgTertiary: 'rgb(38 23 68 / 0.4)',     
       textPrimary: 'rgb(237 233 254 / 0.9)', 
       textSecondary: 'rgb(196 181 253 / 0.8)',
       textMuted: 'rgb(139 92 246 / 0.7)',    
@@ -80,9 +102,9 @@ export const themes: Record<string, Theme> = {
   ocean: {
     name: 'ocean',
     colors: {
-      bgPrimary: 'rgb(7 15 30 / 0.8)',       // Deep blue
-      bgSecondary: 'rgb(15 23 42 / 0.8)',    
-      bgTertiary: 'rgb(30 41 59 / 0.8)',     
+      bgPrimary: 'rgb(7 15 30 / 0.5)',       // Deep blue - mer transparent
+      bgSecondary: 'rgb(15 23 42 / 0.5)',    
+      bgTertiary: 'rgb(30 41 59 / 0.4)',     
       textPrimary: 'rgb(240 249 255 / 0.9)', 
       textSecondary: 'rgb(186 230 253 / 0.8)',
       textMuted: 'rgb(125 211 252 / 0.7)',   

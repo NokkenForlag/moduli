@@ -9,8 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@moduli/core": "workspace:*",
-    "@rive-app/canvas": "^2.21.0"
+    "@moduli/core": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.0.0",

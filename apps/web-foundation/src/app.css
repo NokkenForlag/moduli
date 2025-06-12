@@ -22,6 +22,8 @@
   --blur-xl: 24px;
   
   /* Z-index layers */
+  .z-canvas { z-index: 0 !important; }
+  .z-content { z-index: 10 !important; position: relative; }
   --z-canvas: 0;
   --z-content: 10;
   --z-sidebar: 40;

@@ -1,16 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { testFoundation, applyTheme, themes } from '@moduli/core';
+  import GradientBackground from '$lib/components/GradientBackground.svelte';
   
   let currentTheme = 'dark';
   let testResult = '';
   
   onMount(async () => {
-    // Apply initial theme
     applyTheme(currentTheme);
-    
-    // Run foundation test
-    console.log('Running foundation test...');
     await testFoundation();
     testResult = '✅ Foundation is working!';
   });
@@ -21,13 +18,13 @@
   }
 </script>
 
-<div class="min-h-screen bg-neutral-950 text-text-primary">
-  <!-- Rive Canvas placeholder -->
-  <div class="fixed inset-0 z-canvas bg-gradient-to-br from-purple-900/20 to-blue-900/20"></div>
+<div class="min-h-screen text-text-primary">
+  <!-- Gradient background -->
+  <GradientBackground />
   
   <!-- Main content -->
   <div class="relative z-content">
-    <!-- Simple top bar -->
+    <!-- Top bar -->
     <header class="glass-md border-b border-white/10 px-6 py-4 sticky top-0 z-topnav">
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-bold">Moduli Foundation</h1>
@@ -81,5 +78,8 @@
 </div>
 
 <style>
-  /* Additional component styles if needed */
+  /* Fallback bakgrunn */
+  :global(body) {
+    background: #0a0a0a;
+  }
 </style>
