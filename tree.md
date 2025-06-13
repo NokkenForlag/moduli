@@ -1,80 +1,63 @@
 .
+├── +page.server.ts
 ├── apps
-│   └── web
+│   └── web-foundation
 │       ├── package.json
+│       ├── postcss.config.js
 │       ├── src
 │       │   ├── app.css
 │       │   ├── app.html
 │       │   ├── lib
 │       │   │   ├── components
-│       │   │   │   └── RiveBackground.svelte
-│       │   │   └── stores
-│       │   │       └── navigation.ts
+│       │   │   │   ├── ConceptCard.svelte
+│       │   │   │   ├── GradientBackground.svelte
+│       │   │   │   ├── GraphVisualization.svelte
+│       │   │   │   └── SidebarNav.svelte
+│       │   │   └── server
 │       │   └── routes
+│       │       ├── +layout.server.ts
 │       │       ├── +layout.svelte
 │       │       ├── +page.svelte
 │       │       ├── api
-│       │       │   ├── graph
-│       │       │   │   └── README.md
-│       │       │   ├── paths
-│       │       │   │   └── README.md
-│       │       │   ├── README.md
-│       │       │   └── relations
-│       │       │       └── README.md
-│       │       ├── dev
-│       │       │   └── README.md
-│       │       ├── konsept
-│       │       │   ├── [id]
-│       │       │   │   ├── +page.svelte
-│       │       │   │   ├── +page.ts
-│       │       │   │   └── README.md
-│       │       │   └── README.md
-│       │       ├── laeringssti
-│       │       │   └── README.md
-│       │       ├── oppslagsverk
+│       │       │   └── debug
+│       │       │       └── +server.ts
+│       │       ├── demo
 │       │       │   └── +page.svelte
-│       │       ├── r1
-│       │       │   ├── +page.server.ts
-│       │       │   ├── +page.svelte
-│       │       │   └── konsept
-│       │       │       └── [id]
-│       │       │           ├── +page.server.ts
-│       │       │           └── +page.svelte
-│       │       ├── README.md
 │       │       ├── samling
-│       │       │   ├── [collection]
-│       │       │   │   └── README.md
-│       │       │   └── README.md
-│       │       ├── test-graf
-│       │       │   └── +page.svelte
-│       │       ├── ui-demo
-│       │       │   └── +page.svelte
+│       │       │   └── [id]
+│       │       │       └── +page.svelte
 │       │       └── utforskning
-│       │           ├── +page.svelte
-│       │           ├── anbefalt
-│       │           │   └── README.md
-│       │           ├── graf
-│       │           │   └── README.md
-│       │           └── sok
-│       │               └── README.md
+│       │           └── graf
+│       │               ├── +page.server.ts
+│       │               └── +page.svelte
 │       ├── static
-│       │   ├── assets
-│       │   │   └── rive
-│       │   │       └── graph
-│       │   ├── favicon.png
-│       │   └── README.md
 │       ├── svelte.config.js
+│       ├── tailwind.config.js
 │       ├── tsconfig.json
-│       ├── vite.config.js
-│       └── vite.config.js.timestamp-1749593653772-059317b228a9c.mjs
-├── cleanup-plan.md
-├── commitlint.config.js
+│       └── vite.config.js
+├── disable
+│   └── _
+│       ├── applypatch-msg
+│       ├── commit-msg
+│       ├── h
+│       ├── husky.sh
+│       ├── post-applypatch
+│       ├── post-checkout
+│       ├── post-commit
+│       ├── post-merge
+│       ├── post-rewrite
+│       ├── pre-applypatch
+│       ├── pre-auto-gc
+│       ├── pre-commit
+│       ├── pre-merge-commit
+│       ├── pre-push
+│       ├── pre-rebase
+│       └── prepare-commit-msg
 ├── docs
 │   ├── api
 │   │   └── README.md
-│   ├── architecture
 │   ├── checkpoints
-│   ├── decisions
+│   │   └── project-status-2025-01.md
 │   ├── framework
 │   │   ├── guides
 │   │   │   ├── advanced-guide.md
@@ -102,173 +85,301 @@
 │   │           └── checkpoint.md
 │   └── guides
 │       └── README.md
-├── eslint.config.js
-├── lint-staged.config.js
-├── moduli-systematic-cleanup.sh
+├── legacy
+│   └── 2025-01-graph-refactor
+│       ├── apps
+│       │   └── web
+│       │       ├── package.json
+│       │       ├── src
+│       │       │   ├── app.css
+│       │       │   ├── app.html
+│       │       │   ├── lib
+│       │       │   │   ├── components
+│       │       │   │   │   ├── RiveBackground 2.svelte
+│       │       │   │   │   └── RiveBackground.svelte
+│       │       │   │   └── stores
+│       │       │   │       └── navigation.ts
+│       │       │   └── routes
+│       │       │       ├── +layout.svelte
+│       │       │       ├── +page.svelte
+│       │       │       ├── api
+│       │       │       │   ├── graph
+│       │       │       │   │   └── README.md
+│       │       │       │   ├── paths
+│       │       │       │   │   └── README.md
+│       │       │       │   ├── README.md
+│       │       │       │   └── relations
+│       │       │       │       └── README.md
+│       │       │       ├── dev
+│       │       │       │   └── README.md
+│       │       │       ├── konsept
+│       │       │       │   ├── [id]
+│       │       │       │   │   ├── +page.svelte
+│       │       │       │   │   ├── +page.ts
+│       │       │       │   │   └── README.md
+│       │       │       │   └── README.md
+│       │       │       ├── laeringssti
+│       │       │       │   └── README.md
+│       │       │       ├── oppslagsverk
+│       │       │       │   └── +page.svelte
+│       │       │       ├── r1
+│       │       │       │   ├── +page.server.ts
+│       │       │       │   ├── +page.svelte
+│       │       │       │   └── konsept
+│       │       │       │       └── [id]
+│       │       │       │           ├── +page.server.ts
+│       │       │       │           └── +page.svelte
+│       │       │       ├── README.md
+│       │       │       ├── samling
+│       │       │       │   ├── [collection]
+│       │       │       │   │   └── README.md
+│       │       │       │   └── README.md
+│       │       │       ├── test-graf
+│       │       │       │   └── +page.svelte
+│       │       │       ├── ui-demo
+│       │       │       │   └── +page.svelte
+│       │       │       └── utforskning
+│       │       │           ├── +page.svelte
+│       │       │           ├── anbefalt
+│       │       │           │   └── README.md
+│       │       │           ├── graf
+│       │       │           │   └── README.md
+│       │       │           └── sok
+│       │       │               └── README.md
+│       │       ├── static
+│       │       │   ├── assets
+│       │       │   │   └── rive
+│       │       │   │       └── graph
+│       │       │   ├── favicon.png
+│       │       │   └── README.md
+│       │       ├── svelte.config.js
+│       │       ├── tree.md
+│       │       ├── tsconfig.json
+│       │       ├── vite.config.js
+│       │       └── vite.config.js.timestamp-1749593653772-059317b228a9c.mjs
+│       ├── commitlint.config.js.disabled
+│       ├── eslint.config.js.disabled
+│       ├── lint-staged.config.js.disabled
+│       ├── packages
+│       │   ├── config
+│       │   │   ├── package 2.json
+│       │   │   ├── package.json
+│       │   │   ├── src
+│       │   │   │   ├── features
+│       │   │   │   ├── index 2.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── navigation
+│       │   │   │   ├── stores
+│       │   │   │   │   └── view-selector.ts
+│       │   │   │   └── views
+│       │   │   │       ├── student.ts
+│       │   │   │       └── teacher-view.yaml
+│       │   │   ├── tsconfig 2.json
+│       │   │   └── tsconfig.json
+│       │   ├── content
+│       │   │   ├── add-concept.sh
+│       │   │   ├── create-minimal-r1.sh
+│       │   │   ├── package.json
+│       │   │   ├── README.md
+│       │   │   ├── relations
+│       │   │   ├── scripts
+│       │   │   │   ├── build-graph.ts
+│       │   │   │   ├── generate-paths.ts
+│       │   │   │   ├── migrate-to-graph.ts
+│       │   │   │   ├── README.md
+│       │   │   │   └── validate-relations.ts
+│       │   │   ├── src
+│       │   │   │   ├── assets
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── collections
+│       │   │   │   │   ├── derivasjon-grunnlag.yaml
+│       │   │   │   │   ├── grenser-og-kontinuitet.yaml
+│       │   │   │   │   ├── r1-derivasjon-grunnlag.yaml
+│       │   │   │   │   ├── r1-grenser-kontinuitet.yaml
+│       │   │   │   │   └── r1-matematikk.yaml
+│       │   │   │   ├── concepts
+│       │   │   │   │   ├── funksjoner-kontinuerlig.md
+│       │   │   │   │   ├── r1-derivasjon-definisjon.md
+│       │   │   │   │   ├── r1-differenskvotient.md
+│       │   │   │   │   └── r1-grenseverdi-funksjon.md
+│       │   │   │   ├── index 2.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── indices
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── learning-paths
+│       │   │   │   │   └── r1-standard.yaml
+│       │   │   │   ├── loaders
+│       │   │   │   │   ├── index 2.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── loader.ts
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── relations
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── schemas
+│       │   │   │   │   └── concept.schema.json
+│       │   │   │   └── validator
+│       │   │   │       └── content-validator.ts
+│       │   │   ├── tsconfig 2.json
+│       │   │   └── tsconfig.json
+│       │   ├── graph
+│       │   │   ├── package.json.bak
+│       │   │   ├── src
+│       │   │   │   ├── algorithms
+│       │   │   │   │   ├── centrality.ts
+│       │   │   │   │   ├── cycle-detection.ts
+│       │   │   │   │   ├── dijkstra.ts
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   └── topological-sort.ts
+│       │   │   │   ├── analysis
+│       │   │   │   │   └── README.md
+│       │   │   │   ├── core
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── pathfinding.test.ts
+│       │   │   │   │   │   └── testData.ts
+│       │   │   │   │   ├── GraphBuilder.ts
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── layout
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── LayoutCache.ts
+│       │   │   │   │   └── LayoutManager.ts
+│       │   │   │   ├── README.md
+│       │   │   │   ├── render
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── RiveNodePool.ts
+│       │   │   │   └── traversal
+│       │   │   │       └── README.md
+│       │   │   ├── tsconfig 2.tsbuildinfo
+│       │   │   ├── tsconfig.json
+│       │   │   ├── tsconfig.tsbuildinfo
+│       │   │   └── wasm
+│       │   │       └── README.md
+│       │   ├── types
+│       │   │   ├── examples
+│       │   │   │   └── usage.ts
+│       │   │   ├── package.json
+│       │   │   ├── README.md
+│       │   │   ├── src
+│       │   │   │   ├── content.ts
+│       │   │   │   ├── graph.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── README.md
+│       │   │   │   ├── theme 2.ts
+│       │   │   │   ├── theme.ts
+│       │   │   │   ├── ui 2.ts
+│       │   │   │   ├── ui.ts
+│       │   │   │   ├── user.ts
+│       │   │   │   └── utils.ts
+│       │   │   ├── tsconfig 2.tsbuildinfo
+│       │   │   ├── tsconfig 3.tsbuildinfo
+│       │   │   ├── tsconfig.json
+│       │   │   └── tsconfig.tsbuildinfo
+│       │   ├── ui
+│       │   │   ├── package.json
+│       │   │   ├── src
+│       │   │   │   ├── components
+│       │   │   │   │   ├── content
+│       │   │   │   │   │   ├── ConceptCard.svelte
+│       │   │   │   │   │   ├── MarkdownContent.svelte
+│       │   │   │   │   │   └── PageHeader.svelte
+│       │   │   │   │   ├── feedback
+│       │   │   │   │   │   ├── Loading.svelte
+│       │   │   │   │   │   └── Toast.svelte
+│       │   │   │   │   ├── form
+│       │   │   │   │   │   ├── Button.svelte
+│       │   │   │   │   │   └── Input.svelte
+│       │   │   │   │   ├── graph
+│       │   │   │   │   │   └── HybridGraph.svelte
+│       │   │   │   │   ├── layout
+│       │   │   │   │   │   └── MainLayout.svelte
+│       │   │   │   │   ├── navigation
+│       │   │   │   │   │   ├── Breadcrumbs.svelte
+│       │   │   │   │   │   ├── SideNav.svelte
+│       │   │   │   │   │   └── TopNav.svelte
+│       │   │   │   │   └── theme
+│       │   │   │   │       ├── ThemeToggle.svelte
+│       │   │   │   │       └── util.ts
+│       │   │   │   ├── components 2
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── lib
+│       │   │   │   │   ├── animations.ts
+│       │   │   │   │   ├── cn.ts
+│       │   │   │   │   └── responsive.ts
+│       │   │   │   ├── lib 2
+│       │   │   │   ├── stores
+│       │   │   │   │   └── theme.ts
+│       │   │   │   ├── styles
+│       │   │   │   │   ├── base.css
+│       │   │   │   │   ├── glass.css
+│       │   │   │   │   └── index.css
+│       │   │   │   ├── theme
+│       │   │   │   │   ├── context.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── styles.ts
+│       │   │   │   │   ├── ThemeProvider.svelte
+│       │   │   │   │   ├── themes.ts
+│       │   │   │   │   └── tokens.ts
+│       │   │   │   └── theme 2
+│       │   │   ├── svelte.config 2.js
+│       │   │   ├── svelte.config.js
+│       │   │   ├── tsconfig.json
+│       │   │   ├── vite.config 2.js
+│       │   │   └── vite.config.js
+│       │   └── utils
+│       │       ├── package.json
+│       │       ├── src
+│       │       │   ├── format
+│       │       │   │   └── index.ts
+│       │       │   ├── index.ts
+│       │       │   ├── math
+│       │       │   │   └── index.ts
+│       │       │   └── validation
+│       │       │       └── index.ts
+│       │       ├── src 2
+│       │       ├── tsconfig 2.json
+│       │       ├── tsconfig 2.tsbuildinfo
+│       │       ├── tsconfig.json
+│       │       └── tsconfig.tsbuildinfo
+│       ├── pnpm-workspace.yaml
+│       ├── tailwind.config.js
+│       └── tsconfig.base.json
 ├── package.json
 ├── package.json.bak
 ├── packages
-│   ├── config
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── features
-│   │   │   ├── index.ts
-│   │   │   ├── navigation
-│   │   │   ├── stores
-│   │   │   │   └── view-selector.ts
-│   │   │   └── views
-│   │   │       ├── student.ts
-│   │   │       └── teacher-view.yaml
-│   │   └── tsconfig.json
 │   ├── content
-│   │   ├── add-concept.sh
-│   │   ├── create-minimal-r1.sh
 │   │   ├── package.json
-│   │   ├── README.md
-│   │   ├── relations
-│   │   ├── scripts
-│   │   │   ├── build-graph.ts
-│   │   │   ├── generate-paths.ts
-│   │   │   ├── migrate-to-graph.ts
-│   │   │   ├── README.md
-│   │   │   └── validate-relations.ts
 │   │   ├── src
-│   │   │   ├── assets
-│   │   │   │   └── README.md
-│   │   │   ├── collections
-│   │   │   │   ├── derivasjon-grunnlag.yaml
-│   │   │   │   ├── grenser-og-kontinuitet.yaml
-│   │   │   │   ├── r1-derivasjon-grunnlag.yaml
-│   │   │   │   ├── r1-grenser-kontinuitet.yaml
-│   │   │   │   └── r1-matematikk.yaml
-│   │   │   ├── concepts
-│   │   │   │   ├── funksjoner-kontinuerlig.md
-│   │   │   │   ├── r1-derivasjon-definisjon.md
-│   │   │   │   ├── r1-differenskvotient.md
-│   │   │   │   └── r1-grenseverdi-funksjon.md
 │   │   │   ├── index.ts
-│   │   │   ├── indices
-│   │   │   │   └── README.md
-│   │   │   ├── learning-paths
-│   │   │   │   └── r1-standard.yaml
+│   │   │   ├── konsepter
+│   │   │   │   ├── c1-kalkulus.md
+│   │   │   │   ├── r1-areal-volum.md
+│   │   │   │   ├── r1-derivasjon.md
+│   │   │   │   ├── r1-funksjoner.md
+│   │   │   │   ├── r1-grenseverdi.md
+│   │   │   │   ├── r1-implisitt-derivasjon.md
+│   │   │   │   ├── r1-integrasjon.md
+│   │   │   │   ├── r1-kjerneregelen.md
+│   │   │   │   ├── r1-kontinuitet.md
+│   │   │   │   ├── r1-optimering.md
+│   │   │   │   ├── t1-grenseverdi-oppgaver.md
+│   │   │   │   └── t1-optimeringsproblemer.md
 │   │   │   ├── loaders
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── loader.ts
-│   │   │   │   └── README.md
-│   │   │   ├── relations
-│   │   │   │   └── README.md
-│   │   │   ├── schemas
-│   │   │   │   └── concept.schema.json
-│   │   │   └── validator
-│   │   │       └── content-validator.ts
+│   │   │   │   └── markdown.ts
+│   │   │   ├── paths.ts
+│   │   │   └── types.ts
 │   │   └── tsconfig.json
-│   ├── graph
-│   │   ├── package.json.bak
-│   │   ├── src
-│   │   │   ├── algorithms
-│   │   │   │   ├── centrality.ts
-│   │   │   │   ├── cycle-detection.ts
-│   │   │   │   ├── dijkstra.ts
-│   │   │   │   ├── README.md
-│   │   │   │   └── topological-sort.ts
-│   │   │   ├── analysis
-│   │   │   │   └── README.md
-│   │   │   ├── core
-│   │   │   │   ├── __tests__
-│   │   │   │   │   ├── pathfinding.test.ts
-│   │   │   │   │   └── testData.ts
-│   │   │   │   ├── GraphBuilder.ts
-│   │   │   │   └── index.ts
-│   │   │   ├── index.ts
-│   │   │   ├── layout
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── LayoutCache.ts
-│   │   │   │   └── LayoutManager.ts
-│   │   │   ├── README.md
-│   │   │   ├── render
-│   │   │   │   ├── index.ts
-│   │   │   │   └── RiveNodePool.ts
-│   │   │   └── traversal
-│   │   │       └── README.md
-│   │   ├── tsconfig.json
-│   │   ├── tsconfig.tsbuildinfo
-│   │   └── wasm
-│   │       └── README.md
-│   ├── types
-│   │   ├── examples
-│   │   │   └── usage.ts
-│   │   ├── package.json
-│   │   ├── README.md
-│   │   ├── src
-│   │   │   ├── content.ts
-│   │   │   ├── graph.ts
-│   │   │   ├── index.ts
-│   │   │   ├── README.md
-│   │   │   ├── theme.ts
-│   │   │   ├── user.ts
-│   │   │   └── utils.ts
-│   │   ├── tsconfig 2.tsbuildinfo
-│   │   ├── tsconfig.json
-│   │   └── tsconfig.tsbuildinfo
-│   ├── ui
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── components
-│   │   │   │   ├── content
-│   │   │   │   │   ├── ConceptCard.svelte
-│   │   │   │   │   ├── MarkdownContent.svelte
-│   │   │   │   │   └── PageHeader.svelte
-│   │   │   │   ├── feedback
-│   │   │   │   │   ├── Loading.svelte
-│   │   │   │   │   └── Toast.svelte
-│   │   │   │   ├── form
-│   │   │   │   │   ├── Button.svelte
-│   │   │   │   │   └── Input.svelte
-│   │   │   │   ├── graph
-│   │   │   │   │   └── HybridGraph.svelte
-│   │   │   │   ├── layout
-│   │   │   │   │   └── MainLayout.svelte
-│   │   │   │   ├── navigation
-│   │   │   │   │   ├── Breadcrumbs.svelte
-│   │   │   │   │   ├── SideNav.svelte
-│   │   │   │   │   └── TopNav.svelte
-│   │   │   │   ├── theme
-│   │   │   │   │   ├── provider.ts
-│   │   │   │   │   ├── ThemeToggle.svelte
-│   │   │   │   │   └── util.ts
-│   │   │   │   └── ui
-│   │   │   ├── index.ts
-│   │   │   ├── stores
-│   │   │   │   └── theme.ts
-│   │   │   ├── styles
-│   │   │   │   ├── base.css
-│   │   │   │   ├── index.css
-│   │   │   │   └── utilities.css
-│   │   │   └── theme
-│   │   │       ├── classes.ts
-│   │   │       ├── context.ts
-│   │   │       ├── index.ts
-│   │   │       ├── provider.ts
-│   │   │       ├── theme.ts
-│   │   │       ├── ThemeProvider.svelte
-│   │   │       └── tokens.ts
-│   │   ├── svelte.config.js
-│   │   ├── tsconfig.json
-│   │   └── vite.config.js
-│   └── utils
+│   └── core
 │       ├── package.json
 │       ├── src
-│       │   ├── format
-│       │   │   └── index.ts
+│       │   ├── graph.ts
 │       │   ├── index.ts
-│       │   ├── math
-│       │   │   └── index.ts
-│       │   └── validation
-│       │       └── index.ts
-│       ├── tsconfig.json
-│       └── tsconfig.tsbuildinfo
+│       │   ├── server.ts
+│       │   └── theme.ts
+│       └── tsconfig.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── README.md
+├── test-concepts.js
 ├── tools
 │   ├── ai-context
 │   │   └── generate.js
@@ -280,6 +391,6 @@
 │   │   └── README.md
 │   └── README.md
 ├── tree.md
-└── tsconfig.base.json
+└── tsconfig.json
 
-101 directories, 182 files
+129 directories, 265 files

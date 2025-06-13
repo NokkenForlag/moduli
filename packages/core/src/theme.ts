@@ -80,13 +80,13 @@ export const themes: Record<string, Theme> = {
     name: 'cosmic',
     colors: {
       bgPrimary: 'rgb(13 7 30 / 0.5)',       // Deep purple - mer transparent
-      bgSecondary: 'rgb(25 15 45 / 0.5)',    
-      bgTertiary: 'rgb(38 23 68 / 0.4)',     
-      textPrimary: 'rgb(237 233 254 / 0.9)', 
+      bgSecondary: 'rgb(25 15 45 / 0.65)',   // Mindre transparens
+      bgTertiary: 'rgb(38 23 68 / 0.55)',    // Dypere lilla
+      textPrimary: 'rgb(255 245 255 / 0.95)', // Mer kontrast
       textSecondary: 'rgb(196 181 253 / 0.8)',
-      textMuted: 'rgb(139 92 246 / 0.7)',    
-      accent: 'rgb(168 85 247)',              // purple-500
-      accentHover: 'rgb(147 51 234)',         // purple-600
+      textMuted: 'rgb(193 164 247 / 0.7)',   // Lysere lilla muted
+      accent: 'rgb(147 128 250)',            // Ny primær-lilla for ikoner
+      accentHover: 'rgb(168 140 252)',       // Lysere hoverfarge
       success: 'rgb(52 211 153)',             // emerald-400
       warning: 'rgb(251 191 36)',             // amber-400
       error: 'rgb(248 113 113)'               // red-400

@@ -3,15 +3,15 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [sveltekit()],
-  ssr: {
-    noExternal: ['@moduli/core']
-  },
-  optimizeDeps: {
-    exclude: ['@moduli/core']
-  },
   server: {
     fs: {
-      allow: ['../..']
+      allow: ['..']
     }
+  },
+  optimizeDeps: {
+    exclude: ['@moduli/core', '@moduli/content']
+  },
+  ssr: {
+    noExternal: ['@moduli/core', '@moduli/content']
   }
 });

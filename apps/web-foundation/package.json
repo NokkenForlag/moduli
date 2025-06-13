@@ -9,13 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@moduli/core": "workspace:*"
+    "@moduli/content": "workspace:*",
+    "@moduli/core": "workspace:*",
+    "d3": "^7.9.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.4",
     "@tailwindcss/postcss": "^4.1.9",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^22.15.31",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "svelte": "^5.0.0",

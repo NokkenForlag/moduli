@@ -1,47 +1,59 @@
 <script lang="ts">
-  import type { ConceptMeta } from '@moduli/core';
+  import type { ConceptMeta } from '@moduli/content';
+
+  interface Props {
+    concept: Partial<ConceptMeta>;
+    href?: string;
+    onClick?: () => void;
+  }
+
+  let { concept, href, onClick }: Props = $props();
+
+  // Destrukturer alle properties med defaults
+  const id = concept.id || '';
+  const title = concept.title || 'Untitled';
+  const description = concept.description || '';
+  const difficulty = concept.difficulty ?? 3;
+  const tags = concept.tags ?? [];
+  const relations = concept.relations ?? [];
   
-  export let concept: Partial<ConceptMeta> = {};
-  export let href: string | undefined = undefined;
-  export let onClick: (() => void) | undefined = undefined;
+  function handleClick(e: MouseEvent) {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  }
+
+  const hasRelations = relations.length > 0;
   
-  // Default values
-  const {
-    id = '',
-    title = 'Untitled Concept',
-    description = '',
-    tags = [],
-    difficulty = 1,
-    relations = []
-  } = concept;
+  const difficultyLabels = {
+    1: 'Veldig lett',
+    2: 'Lett',
+    3: 'Middels',  
+    4: 'Vanskelig',
+    5: 'Veldig vanskelig'
+  };
   
-  // Difficulty indicators
-  const difficultyLevels = ['Lett', 'Medium', 'Krevende', 'Avansert', 'Ekspert'];
-  const difficultyColors = [
-    'bg-green-500',
-    'bg-yellow-500',
-    'bg-orange-500',
-    'bg-red-500',
-    'bg-purple-500'
-  ];
+  const difficultyLabel = difficultyLabels[difficulty as keyof typeof difficultyLabels] || 'Ukjent';
   
-  $: difficultyLabel = difficultyLevels[Math.min(difficulty - 1, 4)] || 'Ukjent';
-  $: difficultyColor = difficultyColors[Math.min(difficulty - 1, 4)] || 'bg-gray-500';
-  
-  // Relation icons
-  const relationIcons: Record<string, string> = {
-    'prerequisite-for': '→',
-    'related-to': '↔',
-    'part-of': '⊂',
-    'leads-to': '⇒'
+  const relationIcons = {
+    'prerequisite-for': '📋',
+    'related-to': '🔗',
+    'part-of': '📦',
+    'leads-to': '➡️'
   };
 </script>
 
 <article 
   class="concept-card glass-lg rounded-2xl p-6 transition-all hover:scale-[1.02] hover:shadow-2xl cursor-pointer"
   class:clickable={href || onClick}
-  on:click={onClick}
-  on:keydown={(e) => e.key === 'Enter' && onClick?.()}
+  onclick={handleClick}
+  onkeydown={(e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      onClick?.();
+    }
+  }}
   role={onClick ? 'button' : 'article'}
   tabindex={onClick ? 0 : -1}
 >
@@ -102,7 +114,7 @@
   {/if}
   
   <!-- Relations -->
-  {#if relations && relations.length > 0}
+  {#if hasRelations}
     <div class="border-t border-white/10 pt-4 mt-4">
       <p class="text-xs text-text-muted mb-2 uppercase tracking-wider">Relasjoner</p>
       <div class="flex flex-wrap gap-2">
@@ -141,6 +153,7 @@
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

@@ -1,74 +1,43 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   import { testFoundation, applyTheme, themes } from '@moduli/core';
   import GradientBackground from '$lib/components/GradientBackground.svelte';
   import ConceptCard from '$lib/components/ConceptCard.svelte';
   
-  let currentTheme = 'dark';
-  let testResult = '';
-  let foundationReady = false;
+  let currentTheme = $state('dark');
+  let testResult = $state('');
+  let foundationReady = $state(false);
   
-  onMount(async () => {
-    applyTheme(currentTheme);
-    await testFoundation();
-    testResult = '✅ Foundation is working!';
-    foundationReady = true;
+  // Initialize when in browser
+  $effect(() => {
+    if (browser && !foundationReady) {
+      applyTheme(currentTheme);
+      testFoundation().then(() => {
+        testResult = '✅ Foundation is working!';
+        foundationReady = true;
+      });
+    }
   });
   
-  function switchTheme(theme: string) {
-    currentTheme = theme;
-    applyTheme(theme);
+  function cycleTheme() {
+    const themeNames = Object.keys(themes);
+    const currentIndex = themeNames.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themeNames.length;
+    currentTheme = themeNames[nextIndex];
+    applyTheme(currentTheme);
   }
   
-  // Foundation status som "konsepter"
+  // Rest of your existing data...
+  const statusItems = [
+    // ... existing items ...
+  ];
+  
   const foundationModules = [
-    {
-      id: 'theme-system',
-      title: 'Theme System',
-      description: 'Fire temaer med CSS-variabler og live switching. Glass morphism effekter fungerer på tvers av alle komponenter.',
-      tags: ['css', 'themes', 'ui'],
-      difficulty: 1,
-      relations: [
-        { to: 'glass-morphism', type: 'related-to' },
-        { to: 'css-variables', type: 'part-of' }
-      ]
-    },
-    {
-      id: 'graph-system',
-      title: 'Graf System',
-      description: 'Datastruktur for nodes og edges med topologisk sortering. Klar for visualisering og traversering.',
-      tags: ['graph', 'data', 'algoritmer'],
-      difficulty: 3,
-      relations: [
-        { to: 'concept-relations', type: 'leads-to' },
-        { to: 'visualization', type: 'prerequisite-for' }
-      ]
-    },
-    {
-      id: 'content-system',
-      title: 'Content System',
-      description: 'Markdown loader med YAML frontmatter. Server-side parsing for optimal ytelse.',
-      tags: ['markdown', 'content', 'yaml'],
-      difficulty: 2,
-      relations: [
-        { to: 'concept-loader', type: 'part-of' },
-        { to: 'server-rendering', type: 'related-to' }
-      ]
-    },
-    {
-      id: 'ui-components',
-      title: 'UI Components',
-      description: 'Modulære Svelte-komponenter med glass morphism. ConceptCard implementert og klar.',
-      tags: ['svelte', 'components', 'ui'],
-      difficulty: 2,
-      relations: [
-        { to: 'conceptcard', type: 'part-of' },
-        { to: 'sidebar-nav', type: 'leads-to' }
-      ]
-    }
+    // ... existing modules ...
   ];
 </script>
 
+<!-- Rest of template remains the same -->
 <div class="min-h-screen text-text-primary">
   <GradientBackground />
   

@@ -1,10 +1,12 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   
-  let mounted = false;
+  let mounted = $state(false);
   
-  onMount(() => {
-    mounted = true;
+  $effect(() => {
+    if (browser) {
+      mounted = true;
+    }
   });
 </script>
 
